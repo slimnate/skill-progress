@@ -17,7 +17,35 @@ A microservice that generates composite SVG images from a skill icon/logo and a 
 
 ## Usage
 
-Base route: **`GET /progress`**
+### Production (Netlify)
+
+The function is deployed on Netlify as:
+
+- **Base URL**: `https://skill-progress.netlify.app/.netlify/functions/progress`
+
+Examples:
+
+```text
+# Basic JS skill, level 4, default size
+https://skill-progress.netlify.app/.netlify/functions/progress?skill=js&level=4
+
+# Explicit size 48
+https://skill-progress.netlify.app/.netlify/functions/progress?skill=js&level=4&size=48
+
+# Custom colors
+https://skill-progress.netlify.app/.netlify/functions/progress?skill=js&level=5&startColor=ff6b6b&endColor=4ecdc4
+```
+
+### Local (Express dev server)
+
+Run the local server:
+
+```bash
+npm run dev
+# Then open http://localhost:3000/progress?skill=js&level=4&size=48
+```
+
+Base route (Express): **`GET /progress`** · Netlify: **`GET /.netlify/functions/progress`**
 
 ### Basic: skill + level
 
