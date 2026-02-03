@@ -1,7 +1,12 @@
 import type { CustomImage } from "./skills.js";
 import { parseSvg } from "./svg.js";
 
-const cacheMap = new Map<string, CustomImage>();
+type CecheEntry = {
+    image: CustomImage;
+    timestamp: number;
+};
+
+const cacheMap = new Map<string, CecheEntry>();
 
 const supportedImageTypes = [
     "image/png",
@@ -10,13 +15,21 @@ const supportedImageTypes = [
     "image/svg+xml",
 ];
 
+const cacheTTL = 1000 * 60 * 60 * 24; // 24 hours in milliseconds
+
 const fetchWithCache = async (
     imageUrl: string
 ): Promise<CustomImage | null> => {
     // Check cache and return if found
     if (cacheMap.has(imageUrl)) {
         console.log(`Cache hit for ${imageUrl}`);
-        return cacheMap.get(imageUrl) as CustomImage;
+        const cacheEntry = cacheMap.get(imageUrl);
+        if (cacheEntry && Date.now() - cacheEntry.timestamp < cacheTTL) {
+            return cacheEntry.image;
+        } else {
+            console.log(`Cache expired for ${imageUrl}`);
+            cacheMap.delete(imageUrl);
+        }
     }
 
     // Fetch image
@@ -54,7 +67,10 @@ const fetchWithCache = async (
     }
 
     // Cache image
-    cacheMap.set(imageUrl, image);
+    cacheMap.set(imageUrl, {
+        image,
+        timestamp: Date.now(),
+    });
     console.log(`Cached ${imageUrl}`);
 
     // Return image
