@@ -1,7 +1,7 @@
 import express from "express";
 import type { Request, Response } from "express";
 import { getLevelSvg } from "./lib/levels.js";
-import { getSkillSvg, getCustomImage } from "./lib/skills.js";
+import { getSkillSvg, getImageFromUrl } from "./lib/skills.js";
 import { generateProgressSvg } from "./lib/generate.js";
 
 const app = express();
@@ -51,7 +51,7 @@ app.get("/progress", async (req: Request, res: Response) => {
         }
     } else if (image) {
         // TODO: Generate progress svg for arbitrary image
-        const customImage = await getCustomImage(image);
+        const customImage = await getImageFromUrl(image);
         if (!customImage || !levelSvg) {
             res.status(400).send("Failed to fetch image or level icon");
             return;
