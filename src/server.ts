@@ -1,5 +1,6 @@
 import express from "express";
 import type { Request, Response } from "express";
+import { getLevelSvg } from "./lib/levels.js";
 
 const app = express();
 const port = 3000;
@@ -21,9 +22,14 @@ app.get("/progress", (req: Request, res: Response) => {
         return;
     }
 
+    // get level svg based on level param
+    const levelSvg = getLevelSvg(level);
+
+    return res.send(levelSvg);
+
     // Generate progress svg
     if (skill) {
-        // TODO: Generate progress svg for skill
+        // get svg image from skill
     } else if (image) {
         // TODO: Generate progress svg for image
     } else {
