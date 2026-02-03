@@ -1,31 +1,86 @@
 # skill-progress
-This package is a microservice that generate composite svg images from a given skill icon/logo and augments them with a progress bar to show your proficiency level in that skill. It is optimized to work with the [skill-icons](https://github.com/tandpfun/skill-icons) library, but also supports arbitrary image urls. It supports SVG, PNG, and JPG images for the icons.
 
-# Usage
-Simply call the `progress` route supplying a skill or image, and a proficiency level from 1-5:
+A microservice that generates composite SVG images from a skill icon/logo and a progress bar showing proficiency level (1–5). Optimized for [skill-icons](https://github.com/tandpfun/skill-icons) but supports arbitrary image URLs. Icons can be SVG, PNG, or JPG.
 
-Using skill name from [skill-icons](https://github.com/tandpfun/skill-icons) or any of the provided custom skill icons:
+## Parameters
+
+| Parameter     | Type   | Required | Description |
+| ------------- | ------ | -------- | ----------- |
+| `skill`       | string | one of   | Skill name from [skill-icons](https://github.com/tandpfun/skill-icons) or a custom skill (e.g. `convex`). Either `skill` or `image` must be provided. |
+| `image`       | string | one of   | URL of an arbitrary icon image. Either `skill` or `image` must be provided. |
+| `level`       | number | yes      | Proficiency level from **1** to **5**. |
+| `size`        | number | no       | Output size in pixels. **16–512**, default **48**. |
+| `startColor`  | string | no*      | Progress bar gradient start color: 3 or 6 digit hex **without** `#`. Must be used together with `endColor`. |
+| `endColor`    | string | no*      | Progress bar gradient end color: 3 or 6 digit hex **without** `#`. Must be used together with `startColor`. |
+
+\* `startColor` and `endColor` must both be provided or both omitted.
+
+## Usage
+
+Base route: **`GET /progress`**
+
+### Basic: skill + level
+
+Using a skill name from [skill-icons](https://github.com/tandpfun/skill-icons):
 
 ```
 GET /progress?skill=js&level=5
 ```
 
-## Custom skill icons
-These are skill icons I had to create myself since are not included in the official skill-icons repo - the maintainers have stopped accepting any PR's and have not added any new icons in several years. I would love to accept PRs in this repo for additional icons.
+Other examples:
 
-| Name | Image |
-| ---- | ----- |
+```
+GET /progress?skill=ts&level=3
+GET /progress?skill=react&level=4
+GET /progress?skill=convex&level=2
+```
+
+### Custom image URL
+
+Use any image URL instead of a named skill:
+
+```
+GET /progress?image=https://example.com/my-icon.svg&level=3
+```
+
+### Custom output size
+
+Control the output size (16–512 px, default 48):
+
+```
+GET /progress?skill=js&level=4&size=64
+GET /progress?skill=react&level=5&size=128
+```
+
+### Custom progress bar colors
+
+Override the default yellow-to-green gradient. Pass 3- or 6-digit hex **without** the `#`; both colors are required:
+
+```
+GET /progress?skill=js&level=5&startColor=ff6b6b&endColor=4ecdc4
+GET /progress?skill=ts&level=3&startColor=f00&endColor=00f
+```
+
+### Combined example
+
+```
+GET /progress?skill=convex&level=4&size=96&startColor=667eea&endColor=764ba2
+```
+
+## Custom skill icons
+
+Custom icons are those not in the official skill-icons repo (maintainers have stopped accepting PRs). Additional icons are welcome via PRs to this repo.
+
+| Name    | Image |
+| ------- | ----- |
 | `convex` | <img src="img/Convex-Dark.svg" width="48"></img> |
 
-Arbitray image:
-```
-GET/progress?image=<image_url>&level=3
-```
+## Planned improvements
 
-# Planned improvements
-[x] - Allow for custom progress bar colors
-[ ] - Rasterize to png/jpg instead of svg
-[x] - Custom output size - I think the best method for this would be to generate the result SVG as a 48x48, and then re-parse and resize, so we dont have to deal with scale factors for the progress bar.
-[x] - Cache skill-icons
-[x] - Native support for [simple-icons](https://github.com/simple-icons/simple-icons)
-[ ] - Skill level 0? What are the potential use cases for this?
+- [x] Allow custom progress bar colors
+- [x] Custom output size (generate at 48×48 then resize)
+- [x] Cache skill-icons
+- [x] Native support for [simple-icons](https://github.com/simple-icons/simple-icons)
+- [ ] Rasterize to PNG/JPEG instead of SVG
+- [ ] Skill level 0? (potential use cases TBD)
+- [ ] Add more custom icons (can scrape the PRs on the skill-icons repo and add all the icons that the maintainer won't accept on that project)
