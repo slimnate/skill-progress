@@ -2,6 +2,7 @@ import express from "express";
 import type { Request, Response } from "express";
 import { getLevelSvg } from "./lib/levels.js";
 import { getSkillSvg } from "./lib/skills.js";
+import { generateProgressSvg } from "./lib/generate.js";
 
 const app = express();
 const port = 3000;
@@ -31,7 +32,8 @@ app.get("/progress", async (req: Request, res: Response) => {
         // get svg image from skill
         try {
             const skillSvg = await getSkillSvg(skill);
-            res.send(skillSvg);
+            const progressSvg = generateProgressSvg(skillSvg, levelSvg);
+            res.send(progressSvg);
         } catch (error) {
             res.status(500).send("Failed to fetch skill icon");
             return;
