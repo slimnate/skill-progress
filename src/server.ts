@@ -32,6 +32,10 @@ app.get("/progress", async (req: Request, res: Response) => {
         // get svg image from skill
         try {
             const skillSvg = await getSkillSvg(skill);
+            if (!skillSvg || !levelSvg) {
+                res.status(400).send("Failed to fetch skill or level icon");
+                return;
+            }
             const progressSvg = generateProgressSvg(skillSvg, levelSvg);
             res.send(progressSvg);
         } catch (error) {
