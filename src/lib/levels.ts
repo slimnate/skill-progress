@@ -1,9 +1,12 @@
-import fs from "fs";
-import path from "path";
-import { parseSvg } from "./svg.js";
-import { applyColors } from "./colors.js";
+import fs from 'fs';
+import path from 'path';
+import { parseSvg } from './svg.js';
+import { applyColors } from './colors.js';
 
 const levels = new Map<number, SVGElement>();
+
+const getImgPath = (filename: string): string =>
+    path.join(process.cwd(), 'img', filename);
 
 /**
  * Load the level SVG for a given level
@@ -13,10 +16,10 @@ const levels = new Map<number, SVGElement>();
 const loadLevel = (level: number): SVGElement => {
     // Parse the SVG and set the width and height to 48px
     let svg = parseSvg(
-        fs.readFileSync(path.resolve(`./img/skill-${level}.svg`), "utf8")
+        fs.readFileSync(getImgPath(`skill-${level}.svg`), 'utf8')
     );
-    svg.setAttribute("width", "48");
-    svg.setAttribute("height", "5");
+    svg.setAttribute('width', '48');
+    svg.setAttribute('height', '5');
     return svg;
 };
 

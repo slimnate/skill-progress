@@ -15,9 +15,10 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.js",
+    "dev": "tsx watch src/server.ts",
     "build": "tsc && copyfiles \"img/**\" dist",
     "start": "node dist/server.js",
+    "netlify:dev": "netlify dev",
     "test": ""
   },
   "devDependencies": {
@@ -25,10 +26,12 @@
     "@types/node": "^25.2.0",
     "@types/xmldom": "^0.1.34",
     "copyfiles": "^2.4.1",
+    "netlify-cli": "^22.0.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@netlify/functions": "^5.1.2",
     "express": "^5.2.1",
     "xmldom": "^0.6.0"
   }
