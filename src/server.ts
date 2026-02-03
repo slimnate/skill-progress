@@ -1,11 +1,12 @@
 import express from "express";
 import type { Request, Response } from "express";
 import { getLevelSvg } from "./lib/levels.js";
+import { getSkillSvg } from "./lib/skills.js";
 
 const app = express();
 const port = 3000;
 
-app.get("/progress", (req: Request, res: Response) => {
+app.get("/progress", async (req: Request, res: Response) => {
     // Get query parameters
     const skill = req.query.skill as string;
     const image = req.query.image as string;
@@ -25,11 +26,16 @@ app.get("/progress", (req: Request, res: Response) => {
     // get level svg based on level param
     const levelSvg = getLevelSvg(level);
 
-    return res.send(levelSvg);
-
     // Generate progress svg
     if (skill) {
         // get svg image from skill
+        try {
+            const skillSvg = await getSkillSvg(skill);
+            res.send(skillSvg);
+        } catch (error) {
+            res.status(500).send("Failed to fetch skill icon");
+            return;
+        }
     } else if (image) {
         // TODO: Generate progress svg for image
     } else {

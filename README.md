@@ -26,5 +26,6 @@ GET/progress?image=<image_url>&level=3
 [ ] - Allow for custom progress bar colors
 [ ] - Rasterize to png/jpg instead of svg
 [ ] - Custom output size
+[ ] - Cache skill-icons
 [ ] - Native support for [simple-icons](https://github.com/simple-icons/simple-icons)
 [ ] - Skill level 0? What are the potential use cases for this?
