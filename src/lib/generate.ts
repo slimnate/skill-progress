@@ -1,4 +1,13 @@
 import type { CustomImage } from "./skills.js";
+import { parseSvg } from "./svg.js";
+import { getLevelSvg } from "./levels.js";
+
+const resizeSvg = (svg: string, size: number): string => {
+    const svgElement = parseSvg(svg);
+    svgElement.setAttribute("width", size.toString());
+    svgElement.setAttribute("height", size.toString());
+    return `${svgElement}`;
+};
 
 /**
  * Generate the progress SVG for a given skill and level
@@ -8,10 +17,14 @@ import type { CustomImage } from "./skills.js";
  */
 const generateProgressSvg = (
     skillSvg: CustomImage,
-    levelSvg: SVGElement
+    level: number,
+    size: number
 ): string => {
+    const levelSvg = getLevelSvg(level);
+
+    let svgData: string;
     if (skillSvg.mimeType.includes("image/svg+xml")) {
-        return `
+        svgData = `
             <svg width="48px" height="48px" viewBox="0 0 48 53" xmlns="http://www.w3.org/2000/svg">
                 <g transform="translate(0, 0)">
                     ${skillSvg.data as SVGElement}
@@ -22,7 +35,7 @@ const generateProgressSvg = (
             </svg>
         `;
     } else {
-        return `
+        svgData = `
             <svg width="48px" height="48px" viewBox="0 0 48 53" xmlns="http://www.w3.org/2000/svg">
                 <image href="data:${skillSvg.mimeType};base64,${skillSvg.data}" width="48" height="48" />
                 <g transform="translate(0, 48)">
@@ -31,6 +44,8 @@ const generateProgressSvg = (
             </svg>
         `;
     }
+
+    return resizeSvg(svgData, size);
 };
 
 export { generateProgressSvg };
