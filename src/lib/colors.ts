@@ -14,16 +14,12 @@ const applyColors = (
 ): SVGElement => {
     let str = `${svg}`;
 
-    console.log(startColor, endColor);
-
     if (startColor) {
         str = str.replace(defaultStartColor, `#${startColor}`);
     }
     if (endColor) {
         str = str.replace(defaultEndColor, `#${endColor}`);
     }
-
-    console.log(str);
 
     return parseSvg(str);
 };

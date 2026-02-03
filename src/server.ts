@@ -26,8 +26,6 @@ app.get("/progress", async (req: Request, res: Response) => {
 
     // Validate colors (if provided)
     if (startColor || endColor) {
-        console.log("validating colors");
-        console.log(startColor, endColor);
         if ((startColor && !endColor) || (!startColor && endColor)) {
             return res
                 .status(400)
