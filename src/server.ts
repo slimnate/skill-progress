@@ -1,6 +1,7 @@
 import express from "express";
 import { getSkillSvg, getImageFromUrl } from "./lib/skills.js";
 import { generateProgressSvg } from "./lib/generate.js";
+import { validateColor } from "./lib/colors.js";
 
 import type { Request, Response } from "express";
 import type { CustomImage } from "./lib/skills.js";
@@ -20,6 +21,25 @@ app.get("/progress", async (req: Request, res: Response) => {
     const image = req.query.image as string;
     const level = Number(req.query.level);
     const size = Number(req.query.size) || 48;
+    const startColor = req.query.startColor as string;
+    const endColor = req.query.endColor as string;
+
+    // Validate colors (if provided)
+    if (startColor || endColor) {
+        console.log("validating colors");
+        console.log(startColor, endColor);
+        if ((startColor && !endColor) || (!startColor && endColor)) {
+            return res
+                .status(400)
+                .send("Start and end colors must be provided together");
+        }
+        if (!validateColor(startColor)) {
+            return res.status(400).send("Invalid start color: " + startColor);
+        }
+        if (!validateColor(endColor)) {
+            return res.status(400).send("Invalid end color: " + endColor);
+        }
+    }
 
     // Validate size
     if (!size || size < 16 || size > 512) {
@@ -64,7 +84,13 @@ app.get("/progress", async (req: Request, res: Response) => {
 
     // Generate progress SVG
     try {
-        const progressSvg = generateProgressSvg(skillImage, level, size);
+        const progressSvg = generateProgressSvg(
+            skillImage,
+            level,
+            size,
+            startColor,
+            endColor
+        );
         res.send(progressSvg);
     } catch (error) {
         console.error(error);

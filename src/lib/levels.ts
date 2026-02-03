@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { parseSvg } from "./svg.js";
+import { applyColors } from "./colors.js";
 
 const levels = new Map<number, SVGElement>();
 
@@ -30,8 +31,17 @@ levels.set(5, loadLevel(5));
  * @param level - The level to get the SVG for (1-5)
  * @returns The level SVG
  */
-const getLevelSvg = (level: number): SVGElement | null => {
-    return levels.get(level) || null;
+const getLevelSvg = (
+    level: number,
+    startColor: string | undefined,
+    endColor: string | undefined
+): SVGElement | null => {
+    let levelSvg = levels.get(level);
+    if (!levelSvg) {
+        return null;
+    }
+
+    return applyColors(levelSvg, startColor, endColor);
 };
 
 export { getLevelSvg };

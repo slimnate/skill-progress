@@ -18,9 +18,11 @@ const resizeSvg = (svg: string, size: number): string => {
 const generateProgressSvg = (
     skillSvg: CustomImage,
     level: number,
-    size: number
+    size: number,
+    startColor: string | undefined,
+    endColor: string | undefined
 ): string => {
-    const levelSvg = getLevelSvg(level);
+    const levelSvg = getLevelSvg(level, startColor, endColor);
 
     let svgData: string;
     if (skillSvg.mimeType.includes("image/svg+xml")) {
