@@ -6,6 +6,10 @@ const skillFileMap = new Map<string, string>([
     ["convex", "./img/Convex-Dark.svg"],
 ]);
 
+/**
+ * Load the custom skills from the file map
+ * @returns A map of skill names to SVG elements
+ */
 const loadCustomSkills = (): Map<string, SVGElement> => {
     const skills = new Map<string, SVGElement>();
     for (const [skill, file] of skillFileMap.entries()) {
@@ -20,6 +24,11 @@ const loadCustomSkills = (): Map<string, SVGElement> => {
 
 const customSkills = loadCustomSkills();
 
+/**
+ * Get the skill SVG for a given skill
+ * @param skill - The skill to get the SVG for
+ * @returns The skill SVG
+ */
 const getSkillSvg = async (skill: string): Promise<SVGElement | null> => {
     // Check for custom skills before fetching from skill-icons
     if (customSkills.has(skill)) {

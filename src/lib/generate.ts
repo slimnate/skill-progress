@@ -1,3 +1,9 @@
+/**
+ * Generate the progress SVG for a given skill and level
+ * @param skillSvg - The SVG element for the skill
+ * @param levelSvg - The SVG element for the level
+ * @returns The progress SVG
+ */
 const generateProgressSvg = (
     skillSvg: SVGElement,
     levelSvg: SVGElement

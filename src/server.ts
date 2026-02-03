@@ -7,6 +7,12 @@ import { generateProgressSvg } from "./lib/generate.js";
 const app = express();
 const port = 3000;
 
+/**
+ * Get the progress SVG for a given skill and level
+ * @param req - The request object
+ * @param res - The response object
+ * @returns The progress SVG
+ */
 app.get("/progress", async (req: Request, res: Response) => {
     // Get query parameters
     const skill = req.query.skill as string;
