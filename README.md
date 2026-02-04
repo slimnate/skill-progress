@@ -2,6 +2,13 @@
 
 A microservice that generates composite SVG images from a skill icon/logo and a progress bar showing proficiency level (1–5). Optimized for [skill-icons](https://github.com/tandpfun/skill-icons) but supports arbitrary image URLs. Icons can be SVG, PNG, or JPG.
 
+Example:
+
+![JavaScript – level 4](https://skill-progress.netlify.app/.netlify/functions/progress?skill=js&level=4&size=48)
+![TypeScript – level 5](https://skill-progress.netlify.app/.netlify/functions/progress?skill=ts&level=5&size=48)
+![React – level 4](https://skill-progress.netlify.app/.netlify/functions/progress?skill=react&level=4&size=48)
+![Convex – level 3](https://skill-progress.netlify.app/.netlify/functions/progress?skill=convex&level=3&size=48)
+
 ## Parameters
 
 | Parameter     | Type   | Required | Description |
