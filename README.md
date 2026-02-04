@@ -17,6 +17,7 @@ Example:
 | `image`       | string | one of   | URL of an arbitrary icon image. Either `skill` or `image` must be provided. |
 | `level`       | number | yes      | Proficiency level from **1** to **5**. |
 | `size`        | number | no       | Output size in pixels. **16–512**, default **48**. |
+| `style`       | string | no       | Progress bar style. One of `rounded` (default) or `flat`. |
 | `startColor`  | string | no*      | Progress bar gradient start color: 3 or 6 digit hex **without** `#`. Must be used together with `endColor`. |
 | `endColor`    | string | no*      | Progress bar gradient end color: 3 or 6 digit hex **without** `#`. Must be used together with `startColor`. |
 
@@ -89,6 +90,15 @@ Override the default yellow-to-green gradient. Pass 3- or 6-digit hex **without*
 ```
 GET /progress?skill=js&level=5&startColor=ff6b6b&endColor=4ecdc4
 GET /progress?skill=ts&level=3&startColor=f00&endColor=00f
+```
+
+### Progress bar style
+
+Choose between rounded and flat styles. Default is `rounded`:
+
+```
+GET /progress?skill=js&level=5&style=flat
+GET /progress?skill=react&level=4&style=rounded
 ```
 
 ### Combined example
