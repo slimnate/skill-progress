@@ -11,6 +11,7 @@ app.get('/progress', async (req: Request, res: Response) => {
         ...(q.skill != null && { skill: String(q.skill) }),
         ...(q.image != null && { image: String(q.image) }),
         ...(q.level != null && { level: String(q.level) }),
+        ...(q.style != null && { style: String(q.style) }),
         ...(q.size != null && { size: String(q.size) }),
         ...(q.startColor != null && { startColor: String(q.startColor) }),
         ...(q.endColor != null && { endColor: String(q.endColor) }),

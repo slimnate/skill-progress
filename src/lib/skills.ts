@@ -8,9 +8,7 @@ type CustomImage = {
     data: SVGElement | string;
 };
 
-const skillFileMap = new Map<string, string>([
-    ['convex', 'Convex-Dark.svg'],
-]);
+const skillFileMap = new Map<string, string>([['convex', 'Convex-Dark.svg']]);
 
 const getImgPath = (filename: string): string =>
     path.join(process.cwd(), 'img', filename);
@@ -42,7 +40,7 @@ const getSkillSvg = async (skill: string): Promise<CustomImage | null> => {
     // Check for custom skills before fetching from skill-icons
     if (customSkills.has(skill)) {
         return {
-            mimeType: "image/svg+xml",
+            mimeType: 'image/svg+xml',
             data: customSkills.get(skill) as SVGElement,
         };
     }

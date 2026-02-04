@@ -1,11 +1,11 @@
-import { parseSvg } from "./svg.js";
+import { parseSvg } from './svg.js';
 
 const validateColor = (color: string): boolean => {
     return /^([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/.test(color);
 };
 
-const defaultStartColor = "#fdff60";
-const defaultEndColor = "#00ff41";
+const defaultStartColor = '#fdff60';
+const defaultEndColor = '#00ff41';
 
 const applyColors = (
     svg: SVGElement,

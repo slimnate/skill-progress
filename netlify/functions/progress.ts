@@ -6,6 +6,7 @@ export const handler: Handler = async (event) => {
         skill: event.queryStringParameters?.skill,
         image: event.queryStringParameters?.image,
         level: event.queryStringParameters?.level,
+        style: event.queryStringParameters?.style,
         size: event.queryStringParameters?.size,
         startColor: event.queryStringParameters?.startColor,
         endColor: event.queryStringParameters?.endColor,

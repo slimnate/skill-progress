@@ -7,6 +7,7 @@ export type ProgressParams = {
     skill?: string;
     image?: string;
     level?: string;
+    style?: string;
     size?: string;
     startColor?: string;
     endColor?: string;
@@ -22,6 +23,7 @@ export async function handleProgress(
     const skill = params.skill;
     const image = params.image;
     const level = Number(params.level);
+    const style = params.style || 'rounded';
     const size = Number(params.size) || 48;
     const startColor = params.startColor;
     const endColor = params.endColor;
@@ -70,6 +72,14 @@ export async function handleProgress(
         };
     }
 
+    // Validate style
+    if (style !== 'rounded' && style !== 'flat') {
+        return {
+            statusCode: 400,
+            body: 'Invalid style',
+        };
+    }
+
     // Resolve skill or image
     let skillImage: CustomImage | null = null;
     try {
@@ -98,10 +108,12 @@ export async function handleProgress(
         };
     }
 
+    // Generate and return response
     try {
         const progressSvg = generateProgressSvg(
             skillImage,
             level,
+            style,
             size,
             startColor,
             endColor
