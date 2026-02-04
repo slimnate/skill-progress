@@ -1,16 +1,17 @@
-import fs from "fs";
-import path from "path";
-import { parseSvg } from "./svg.js";
-import { fetchWithCache } from "./cache.js";
+import fs from 'fs';
+import path from 'path';
+import { parseSvg } from './svg.js';
+import { fetchWithCache } from './cache.js';
 
 type CustomImage = {
     mimeType: string;
     data: SVGElement | string;
 };
 
-const skillFileMap = new Map<string, string>([
-    ["convex", "./img/Convex-Dark.svg"],
-]);
+const skillFileMap = new Map<string, string>([['convex', 'Convex-Dark.svg']]);
+
+const getImgPath = (filename: string): string =>
+    path.join(process.cwd(), 'img', filename);
 
 /**
  * Load the custom skills from the file map
@@ -20,9 +21,9 @@ const loadCustomSkills = (): Map<string, SVGElement> => {
     const skills = new Map<string, SVGElement>();
     for (const [skill, file] of skillFileMap.entries()) {
         // Parse the SVG and set the width and height to 48px
-        let svg = parseSvg(fs.readFileSync(path.resolve(file), "utf8"));
-        svg.setAttribute("width", "48");
-        svg.setAttribute("height", "48");
+        let svg = parseSvg(fs.readFileSync(getImgPath(file), 'utf8'));
+        svg.setAttribute('width', '48');
+        svg.setAttribute('height', '48');
         skills.set(skill, svg);
     }
     return skills;
@@ -39,7 +40,7 @@ const getSkillSvg = async (skill: string): Promise<CustomImage | null> => {
     // Check for custom skills before fetching from skill-icons
     if (customSkills.has(skill)) {
         return {
-            mimeType: "image/svg+xml",
+            mimeType: 'image/svg+xml',
             data: customSkills.get(skill) as SVGElement,
         };
     }

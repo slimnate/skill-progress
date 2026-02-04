@@ -1,4 +1,4 @@
-import { DOMParser } from "xmldom";
+import { DOMParser } from 'xmldom';
 
 const parser = new DOMParser();
 
@@ -8,7 +8,7 @@ const parser = new DOMParser();
  * @returns The SVG element
  */
 const parseSvg = (source: string): SVGElement => {
-    return parser.parseFromString(source, "image/svg+xml")
+    return parser.parseFromString(source, 'image/svg+xml')
         .documentElement as unknown as SVGElement;
 };
 

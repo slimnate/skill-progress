@@ -24,51 +24,27 @@ Example:
 
 ## Usage
 
-### GitHub profile examples
+### Deploy on Netlify (recommended)
 
-You can embed these directly in your GitHub profile README (or any markdown file) as images:
+The app runs as a Netlify Function. Deploy by connecting this repo to [Netlify](https://netlify.com); build command and functions are configured in `netlify.toml`.
 
-```markdown
-![JavaScript – level 4](https://skill-progress.netlify.app/.netlify/functions/progress?skill=js&level=4&size=48)
-![TypeScript – level 5](https://skill-progress.netlify.app/.netlify/functions/progress?skill=ts&level=5&size=48)
-![React – level 4](https://skill-progress.netlify.app/.netlify/functions/progress?skill=react&level=4&size=48)
-![Convex – level 3](https://skill-progress.netlify.app/.netlify/functions/progress?skill=convex&level=3&size=48)
+- **Function URL:** `/.netlify/functions/progress`
+- **Example:** `https://your-site.netlify.app/.netlify/functions/progress?skill=js&level=5`
+
+Test locally with Netlify CLI:
+
+```bash
+npm run netlify:dev
+# Then open http://localhost:8888/.netlify/functions/progress?skill=js&level=5
 ```
 
-Rendered, they look like this:
+### Local Express server
 
-![JavaScript – level 4](https://skill-progress.netlify.app/.netlify/functions/progress?skill=js&level=4&size=48)
-![TypeScript – level 5](https://skill-progress.netlify.app/.netlify/functions/progress?skill=ts&level=5&size=48)
-![React – level 4](https://skill-progress.netlify.app/.netlify/functions/progress?skill=react&level=4&size=48)
-![Convex – level 3](https://skill-progress.netlify.app/.netlify/functions/progress?skill=convex&level=3&size=48)
-
-
-### Production (Netlify)
-
-The function is deployed on Netlify as:
-
-- **Base URL**: `https://skill-progress.netlify.app/.netlify/functions/progress`
-
-Examples:
-
-```text
-# Basic JS skill, level 4, default size
-https://skill-progress.netlify.app/.netlify/functions/progress?skill=js&level=4
-
-# Explicit size 48
-https://skill-progress.netlify.app/.netlify/functions/progress?skill=js&level=4&size=48
-
-# Custom colors
-https://skill-progress.netlify.app/.netlify/functions/progress?skill=js&level=5&startColor=ff6b6b&endColor=4ecdc4
-```
-
-### Local (Express dev server)
-
-Run the local server:
+Run the classic Express server for local development:
 
 ```bash
 npm run dev
-# Then open http://localhost:3000/progress?skill=js&level=4&size=48
+# Then open http://localhost:3000/progress?skill=js&level=5
 ```
 
 Base route (Express): **`GET /progress`** · Netlify: **`GET /.netlify/functions/progress`**
