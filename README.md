@@ -157,7 +157,7 @@ Done:
 New Features:
 - [ ] Skill level 0? (potential use case is for generating icon without a progress bar at all - this could allow people to contribute icons to my library since the skill-icons maintainers no longer accept new icons)
 - [ ] Add more custom icons (can scrape the PRs on the skill-icons repo and add all the icons that the maintainer won't accept on that project)
-- [ ] Allow for labels and use of emojis as progress bar (https://stackoverflow.com/questions/24768630/is-there-a-way-to-show-a-progressbar-on-github-wiki/61857070#61857070)
+- [ ] Allow for labels and use of emojis as progress bar [https://stackoverflow.com/questions/24768630/is-there-a-way-to-show-a-progressbar-on-github-wiki/61857070#61857070](https://stackoverflow.com/questions/24768630/is-there-a-way-to-show-a-progressbar-on-github-wiki/61857070#61857070)
 - [ ] Generate SVGs from scratch so that any percentage can be used, instead of just the 1-5 steps.
 - [ ] Add support for additional input image types (webp, etc.)
 - [ ] Vertical progress bar option (to left/right of image).
@@ -169,4 +169,4 @@ Cache:
 - [ ] Upper bounds on cache size, delete oldest entries when size limit reached.
 
 Maintenance:
-- [ ] Create YAML forms for issue template (https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms)
+- [ ] Create YAML forms for issue template [https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms) example: [https://github.com/simple-icons/simple-icons/blob/develop/.github/ISSUE_TEMPLATE/icon_request.yml](https://github.com/simple-icons/simple-icons/blob/develop/.github/ISSUE_TEMPLATE/icon_request.yml)
