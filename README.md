@@ -134,18 +134,22 @@ Custom icons are those not in the official skill-icons repo (maintainers have st
 
 ## Planned improvements
 
+Done:
 - [x] Allow custom progress bar colors
 - [x] Custom output size (generate at 48×48 then resize)
 - [x] Cache skill-icons
 - [x] Native support for [simple-icons](https://github.com/simple-icons/simple-icons)
-- [ ] Rasterize to PNG/JPEG instead of SVG
+
+New Features:
 - [ ] Skill level 0? (potential use case is for generating icon without a progress bar at all - this could allow people to contribute icons to my library since the skill-icons maintainers no longer accept new icons)
 - [ ] Add more custom icons (can scrape the PRs on the skill-icons repo and add all the icons that the maintainer won't accept on that project)
-- [ ] Allow for labels, and to use emojis as progress bar (https://stackoverflow.com/questions/24768630/is-there-a-way-to-show-a-progressbar-on-github-wiki/61857070#61857070)
+- [ ] Allow for labels and use of emojis as progress bar (https://stackoverflow.com/questions/24768630/is-there-a-way-to-show-a-progressbar-on-github-wiki/61857070#61857070)
 - [ ] Generate SVGs from scratch so that any percentage can be used, instead of just the 1-5 steps.
-- [ ] Add support for additional input iamge types (webp, etc.)
-- [ ] Vertical progress bar to left/right of image.
+- [ ] Add support for additional input image types (webp, etc.)
+- [ ] Vertical progress bar option (to left/right of image).
 - [ ] Base route should redirect to project homepage on github instead of 404
+
+Cache:
 - [ ] Store expiration time of cache instead of calculating on every request.
 - [ ] Garbage collect expired cache entries even if they have not been requested and refreshed.
 - [ ] Upper bounds on cache size, delete oldest entries when size limit reached.
