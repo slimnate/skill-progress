@@ -98,11 +98,11 @@ Override the default yellow-to-green gradient. Pass 3- or 6-digit hex **without*
 
 ```
 https://skill-progress.netlify.app/.netlify/functions/progress?skill=js&level=5&startColor=ff6b6b&endColor=4ecdc4
-https://skill-progress.netlify.app/.netlify/functions/progress?skill=ts&level=3&startColor=f00&endColor=00f
+https://skill-progress.netlify.app/.netlify/functions/progress?skill=ts&level=5&startColor=f00&endColor=00f
 ```
 
 ![JavaScript – custom colors](https://skill-progress.netlify.app/.netlify/functions/progress?skill=js&level=5&startColor=ff6b6b&endColor=4ecdc4&size=48)
-![TypeScript – custom colors](https://skill-progress.netlify.app/.netlify/functions/progress?skill=ts&level=3&startColor=f00&endColor=00f&size=48)
+![TypeScript – custom colors](https://skill-progress.netlify.app/.netlify/functions/progress?skill=ts&level=5&startColor=f00&endColor=00f&size=48)
 
 ### Progress bar style
 
