@@ -25,30 +25,13 @@ Example:
 
 ## Usage
 
-### Deploy on Netlify (recommended)
+A public instance is hosted at:
 
-The app runs as a Netlify Function. Deploy by connecting this repo to [Netlify](https://netlify.com); build command and functions are configured in `netlify.toml`.
-
-- **Function URL:** `/.netlify/functions/progress`
-- **Example:** `https://your-site.netlify.app/.netlify/functions/progress?skill=js&level=5`
-
-Test locally with Netlify CLI:
-
-```bash
-npm run netlify:dev
-# Then open http://localhost:8888/.netlify/functions/progress?skill=js&level=5
+```
+https://skill-progress.netlify.app/.netlify/functions/progress
 ```
 
-### Local Express server
-
-Run the classic Express server for local development:
-
-```bash
-npm run dev
-# Then open http://localhost:3000/progress?skill=js&level=5
-```
-
-Base route (Express): **`GET /progress`** · Netlify: **`GET /.netlify/functions/progress`**
+You can use it directly in your markdown or HTML by adding query parameters for your desired skill and level.
 
 ### Basic: skill + level
 
@@ -123,6 +106,37 @@ https://skill-progress.netlify.app/.netlify/functions/progress?skill=convex&leve
 ```
 
 ![Convex – combined example](https://skill-progress.netlify.app/.netlify/functions/progress?skill=convex&level=4&size=96&startColor=667eea&endColor=764ba2)
+
+## Development
+
+### Installing dependencies
+
+```bash
+npm install
+```
+
+### Deploy on Netlify (recommended)
+
+The app runs as a Netlify Function. Deploy by connecting this repo to [Netlify](https://netlify.com); build command and functions are configured in `netlify.toml`.
+
+- **Function URL:** `/.netlify/functions/progress`
+- **Example:** `https://your-site.netlify.app/.netlify/functions/progress?skill=js&level=5`
+
+Test locally with Netlify CLI:
+
+```bash
+npm run netlify:dev
+# Then open http://localhost:8888/.netlify/functions/progress?skill=js&level=5
+```
+
+### Local Express server
+
+Run the classic Express server for local development:
+
+```bash
+npm run dev
+# Then open http://localhost:3000/progress?skill=js&level=5
+```
 
 ## Custom skill icons
 
