@@ -145,3 +145,7 @@ Custom icons are those not in the official skill-icons repo (maintainers have st
 - [ ] Generate SVGs from scratch so that any percentage can be used, instead of just the 1-5 steps.
 - [ ] Add support for additional input iamge types (webp, etc.)
 - [ ] Vertical progress bar to left/right of image.
+- [ ] Base route should redirect to project homepage on github instead of 404
+- [ ] Store expiration time of cache instead of calculating on every request.
+- [ ] Garbage collect expired cache entries even if they have not been requested and refreshed.
+- [ ] Upper bounds on cache size, delete oldest entries when size limit reached.

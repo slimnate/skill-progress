@@ -11,12 +11,12 @@ const resizeSvg = (svg: string, size: number): string => {
 
 /**
  * Generate the progress SVG for a given skill and level
- * @param skillSvg - The SVG element for the skill
+ * @param skillImage - The SVG element for the skill
  * @param levelSvg - The SVG element for the level
  * @returns The progress SVG
  */
 const generateProgressSvg = (
-    skillSvg: CustomImage,
+    skillImage: CustomImage,
     level: number,
     style: string,
     size: number,
@@ -25,28 +25,18 @@ const generateProgressSvg = (
 ): string => {
     const levelSvg = getLevelSvg(level, style, startColor, endColor);
 
-    let svgData: string;
-    if (skillSvg.mimeType.includes('image/svg+xml')) {
-        svgData = `
-            <svg width="48px" height="48px" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
-                <g transform="translate(0, 0)">
-                    ${skillSvg.data as SVGElement}
-                </g>
-                <g transform="translate(0, 48)">
-                    ${levelSvg}
-                </g>
-            </svg>
-        `;
-    } else {
-        svgData = `
-            <svg width="48px" height="48px" viewBox="0 0 48 53" xmlns="http://www.w3.org/2000/svg">
-                <image href="data:${skillSvg.mimeType};base64,${skillSvg.data}" width="48" height="48" />
-                <g transform="translate(0, 48)">
-                    ${levelSvg}
-                </g>
-            </svg>
-        `;
-    }
+    const imageData = skillImage.mimeType.includes('image/svg+xml')
+        ? `<g transform="translate(0, 0)">${skillImage.data as SVGElement}</g>`
+        : `<image href="data:${skillImage.mimeType};base64,${skillImage.data}" width="48" height="48" />`;
+
+    const levelData = `<g transform="translate(0, 48)">${levelSvg}</g>`;
+
+    const svgData = `
+        <svg width="48px" height="48px" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+            ${imageData}
+            ${levelData}
+        </svg>
+    `;
 
     return resizeSvg(svgData, size);
 };
