@@ -167,3 +167,6 @@ Cache:
 - [ ] Store expiration time of cache instead of calculating on every request.
 - [ ] Garbage collect expired cache entries even if they have not been requested and refreshed.
 - [ ] Upper bounds on cache size, delete oldest entries when size limit reached.
+
+Maintenance:
+- [ ] Create YAML forms for issue template (https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms)
