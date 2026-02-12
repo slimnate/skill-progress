@@ -8,7 +8,10 @@ type CustomImage = {
     data: SVGElement | string;
 };
 
-const skillFileMap = new Map<string, string>([['convex', 'Convex-Dark.svg']]);
+const skillFileMap = new Map<string, string>([
+    ['convex', 'Convex-Dark.svg'],
+    ['workos', 'WorkOS-Dark.svg'],
+]);
 
 const getImgPath = (filename: string): string =>
     path.join(process.cwd(), 'img', filename);
@@ -54,7 +57,7 @@ const getSkillSvg = async (skill: string): Promise<CustomImage | null> => {
  * @returns The image SVG
  */
 const getImageFromUrl = async (
-    imageUrl: string
+    imageUrl: string,
 ): Promise<CustomImage | null> => {
     return await fetchWithCache(imageUrl);
 };
