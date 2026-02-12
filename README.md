@@ -35,7 +35,7 @@ You can use it directly in markdown or HTML by adding query parameters for your 
 
 ### Basic: skill + level
 
-Using a skill name from [skill-icons](https://github.com/tandpfun/skill-icons):
+Using a skill name from [skill-icons](https://github.com/tandpfun/skill-icons) or one of the [custom skills](#custom-skill-icons) included in this project:
 
 ```
 https://skill-progress.netlify.app/.netlify/functions/progress?skill=js&level=5
