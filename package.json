@@ -1,6 +1,6 @@
 {
   "name": "skill-progress",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Augment skill-icons with a progress bar to show proficiency",
   "homepage": "https://github.com/slimnate/skill-progress#readme",
   "bugs": {
