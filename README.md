@@ -1,6 +1,6 @@
 # skill-progress
 
-A microservice that generates composite SVG images from a skill icon/logo and a progress bar showing proficiency level (1–5). Optimized for [skill-icons](https://github.com/tandpfun/skill-icons) but supports arbitrary image URLs. Icons can be SVG, PNG, or JPG.
+A microservice that generates SVG images from a skill icon/logo, optionally with a progress bar showing proficiency level (1-5). Optimized for [skill-icons](https://github.com/tandpfun/skill-icons) but supports arbitrary image URLs. Icons can be SVG, PNG, or JPG.
 
 Example:
 
@@ -15,7 +15,7 @@ Example:
 | ------------- | ------ | -------- | ----------- |
 | `skill`       | string | one of   | Skill name from [skill-icons](https://github.com/tandpfun/skill-icons) or a custom skill (e.g. `convex`). Either `skill` or `image` must be provided. |
 | `image`       | string | one of   | URL of an arbitrary icon image. Either `skill` or `image` must be provided. |
-| `level`       | number | yes      | Proficiency level from **1** to **5**. |
+| `level`       | number | no       | Proficiency level from **1** to **5**. If omitted, the output contains just the icon (no progress bar). |
 | `size`        | number | no       | Output size in pixels. **16–512**, default **48**. |
 | `style`       | string | no       | Progress bar style. One of `rounded` (default) or `flat`. |
 | `startColor`  | string | no*      | Progress bar gradient start color: 3 or 6 digit hex **without** `#`. Must be used together with `endColor`. |
@@ -31,7 +31,7 @@ A public instance is hosted at:
 https://skill-progress.netlify.app/.netlify/functions/progress
 ```
 
-You can use it directly in your markdown or HTML by adding query parameters for your desired skill and level.
+You can use it directly in markdown or HTML by adding query parameters for your desired skill/image and optional level.
 
 ### Basic: skill + level
 
@@ -62,6 +62,19 @@ Use any image URL instead of a named skill:
 ```
 https://skill-progress.netlify.app/.netlify/functions/progress?image=https://example.com/my-icon.svg&level=3
 ```
+
+### Icon only (no `level`)
+
+Omit `level` to return just the icon:
+
+```
+https://skill-progress.netlify.app/.netlify/functions/progress?skill=js
+https://skill-progress.netlify.app/.netlify/functions/progress?skill=convex&size=64
+https://skill-progress.netlify.app/.netlify/functions/progress?image=https://example.com/my-icon.svg
+```
+
+![JavaScript icon only](https://skill-progress.netlify.app/.netlify/functions/progress?skill=js&size=48)
+![Convex icon only](https://skill-progress.netlify.app/.netlify/functions/progress?skill=convex&size=64)
 
 ### Custom output size
 
@@ -153,10 +166,10 @@ Done:
 - [x] Custom output size (generate at 48×48 then resize)
 - [x] Cache skill-icons
 - [x] Native support for [simple-icons](https://github.com/simple-icons/simple-icons)
+- [x] Allow icon-only output when `level` is omitted
 
 New Features:
-- [ ] Skill level 0? (potential use case is for generating icon without a progress bar at all - this could allow people to contribute icons to my library since the skill-icons maintainers no longer accept new icons)
-- [ ] Add more custom icons (can scrape the PRs on the skill-icons repo and add all the icons that the maintainer won't accept on that project)
+- [ ] Add more custom icons (can scrape the PRs on the skill-icons repo and add all the icons that the maintainer won't accept on that project, also can add icons from [https://dashboardicons.com/](https://dashboardicons.com/))
 - [ ] Allow for labels and use of emojis as progress bar [https://stackoverflow.com/questions/24768630/is-there-a-way-to-show-a-progressbar-on-github-wiki/61857070#61857070](https://stackoverflow.com/questions/24768630/is-there-a-way-to-show-a-progressbar-on-github-wiki/61857070#61857070)
 - [ ] Generate SVGs from scratch so that any percentage can be used, instead of just the 1-5 steps.
 - [ ] Add support for additional input image types (webp, etc.)

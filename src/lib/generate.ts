@@ -21,7 +21,7 @@ const generateProgressSvg = (
     style: string,
     size: number,
     startColor: string | undefined,
-    endColor: string | undefined
+    endColor: string | undefined,
 ): string => {
     const levelSvg = getLevelSvg(level, style, startColor, endColor);
 
@@ -29,10 +29,12 @@ const generateProgressSvg = (
         ? `<g transform="translate(0, 0)">${skillImage.data as SVGElement}</g>`
         : `<image href="data:${skillImage.mimeType};base64,${skillImage.data}" width="48" height="48" />`;
 
-    const levelData = `<g transform="translate(0, 48)">${levelSvg}</g>`;
+    const levelData = levelSvg
+        ? `<g transform="translate(0, 48)">${levelSvg}</g>`
+        : '';
 
     const svgData = `
-        <svg width="48px" height="48px" viewBox="0 0 48 56" xmlns="http://www.w3.org/2000/svg">
+        <svg width="48px" height="48px" viewBox="0 0 48 ${levelSvg ? '56' : '48'}" xmlns="http://www.w3.org/2000/svg">
             ${imageData}
             ${levelData}
         </svg>

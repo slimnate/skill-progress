@@ -18,7 +18,7 @@ export type ProgressResult =
     | { statusCode: 400 | 500; body: string };
 
 export async function handleProgress(
-    params: ProgressParams
+    params: ProgressParams,
 ): Promise<ProgressResult> {
     const skill = params.skill;
     const image = params.image;
@@ -55,20 +55,6 @@ export async function handleProgress(
         return {
             statusCode: 400,
             body: 'Size must be between 16 and 512',
-        };
-    }
-
-    // Validate level
-    if (!level) {
-        return {
-            statusCode: 400,
-            body: 'Missing level',
-        };
-    }
-    if (level < 1 || level > 5) {
-        return {
-            statusCode: 400,
-            body: 'Level must be between 1 and 5',
         };
     }
 
@@ -116,7 +102,7 @@ export async function handleProgress(
             style,
             size,
             startColor,
-            endColor
+            endColor,
         );
         return { statusCode: 200, body: progressSvg };
     } catch (error) {
