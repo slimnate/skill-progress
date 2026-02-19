@@ -13,9 +13,11 @@ export type ProgressParams = {
     endColor?: string;
 };
 
-export type ProgressResult =
-    | { statusCode: 200; body: string }
-    | { statusCode: 400 | 500; body: string };
+export type ProgressResult = {
+    statusCode: number;
+    body: string;
+    headers?: Record<string, string>;
+};
 
 export async function handleProgress(
     params: ProgressParams,
@@ -34,18 +36,30 @@ export async function handleProgress(
             return {
                 statusCode: 400,
                 body: 'Start and end colors must be provided together',
+                headers: {
+                    'Content-Type': 'text/plain; charset=utf-8',
+                    'Cache-Control': 'no-cache',
+                },
             };
         }
         if (!validateColor(startColor!)) {
             return {
                 statusCode: 400,
                 body: 'Invalid start color: ' + startColor,
+                headers: {
+                    'Content-Type': 'text/plain; charset=utf-8',
+                    'Cache-Control': 'no-cache',
+                },
             };
         }
         if (!validateColor(endColor!)) {
             return {
                 statusCode: 400,
                 body: 'Invalid end color: ' + endColor,
+                headers: {
+                    'Content-Type': 'text/plain; charset=utf-8',
+                    'Cache-Control': 'no-cache',
+                },
             };
         }
     }
@@ -55,6 +69,10 @@ export async function handleProgress(
         return {
             statusCode: 400,
             body: 'Size must be between 16 and 512',
+            headers: {
+                'Content-Type': 'text/plain; charset=utf-8',
+                'Cache-Control': 'no-cache',
+            },
         };
     }
 
@@ -63,6 +81,10 @@ export async function handleProgress(
         return {
             statusCode: 400,
             body: 'Invalid style',
+            headers: {
+                'Content-Type': 'text/plain; charset=utf-8',
+                'Cache-Control': 'no-cache',
+            },
         };
     }
 
@@ -77,6 +99,10 @@ export async function handleProgress(
             return {
                 statusCode: 400,
                 body: 'Missing skill or image',
+                headers: {
+                    'Content-Type': 'text/plain; charset=utf-8',
+                    'Cache-Control': 'no-cache',
+                },
             };
         }
     } catch (error) {
@@ -84,6 +110,10 @@ export async function handleProgress(
         return {
             statusCode: 500,
             body: 'Failed to fetch skill or image',
+            headers: {
+                'Content-Type': 'text/plain; charset=utf-8',
+                'Cache-Control': 'no-cache',
+            },
         };
     }
 
@@ -91,6 +121,10 @@ export async function handleProgress(
         return {
             statusCode: 400,
             body: 'Failed to fetch skill or image',
+            headers: {
+                'Content-Type': 'text/plain; charset=utf-8',
+                'Cache-Control': 'no-cache',
+            },
         };
     }
 
@@ -104,12 +138,23 @@ export async function handleProgress(
             startColor,
             endColor,
         );
-        return { statusCode: 200, body: progressSvg };
+        return {
+            statusCode: 200,
+            body: progressSvg,
+            headers: {
+                'Content-Type': 'image/svg+xml',
+                'Cache-Control': 'public, max-age=86400',
+            },
+        };
     } catch (error) {
         console.error(error);
         return {
             statusCode: 500,
             body: 'Failed to generate progress SVG',
+            headers: {
+                'Content-Type': 'text/plain; charset=utf-8',
+                'Cache-Control': 'no-cache',
+            },
         };
     }
 }

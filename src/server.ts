@@ -17,6 +17,11 @@ app.get('/progress', async (req: Request, res: Response) => {
         ...(q.endColor != null && { endColor: String(q.endColor) }),
     });
     res.status(result.statusCode);
+    if (result.headers) {
+        Object.entries(result.headers).forEach(([key, value]) => {
+            res.setHeader(key, value);
+        });
+    }
     if (result.statusCode === 200) {
         res.type('image/svg+xml').send(result.body);
     } else {

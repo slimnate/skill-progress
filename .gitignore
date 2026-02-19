@@ -8,3 +8,6 @@ netlify/functions/*.js
 netlify/functions/*.js.map
 netlify/functions/*.d.ts
 netlify/functions/*.d.ts.map
+
+# 0x profiles
+*.0x

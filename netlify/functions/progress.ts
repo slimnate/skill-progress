@@ -16,12 +16,7 @@ export const handler: Handler = async (event) => {
 
     return {
         statusCode: result.statusCode,
-        headers: {
-            'Content-Type':
-                result.statusCode === 200
-                    ? 'image/svg+xml'
-                    : 'text/plain; charset=utf-8',
-        },
+        headers: result.headers || {},
         body: result.body,
     };
 };
