@@ -1,15 +1,29 @@
-import { DOMParser } from 'xmldom';
+class SVG {
+    constructor(private source: string) {
+        this.source = this.sanitize(source);
+    }
 
-const parser = new DOMParser();
+    sanitize(string: string): string {
+        return string.replace(/<\?xml.*\?>/g, '');
+    }
 
-/**
- * Parse the SVG source and return the SVG element
- * @param source - The SVG source to parse
- * @returns The SVG element
- */
-const parseSvg = (source: string): SVGElement => {
-    return parser.parseFromString(source, 'image/svg+xml')
-        .documentElement as unknown as SVGElement;
-};
+    setAttribute(name: string, value: string): void {
+        this.source = this.source.replace(
+            new RegExp(`${name}=".*?"`),
+            `${name}="${value}"`,
+        );
+    }
 
-export { parseSvg };
+    replaceColor(oldColor: string, newColor: string): void {
+        this.source = this.source.replace(
+            new RegExp(`#${oldColor}`),
+            `#${newColor}`,
+        );
+    }
+
+    toString(): string {
+        return this.source;
+    }
+}
+
+export { SVG };

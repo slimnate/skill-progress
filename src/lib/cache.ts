@@ -1,8 +1,11 @@
 import type { CustomImage } from './skills.js';
-import { parseSvg } from './svg.js';
+import { SVG } from './svg.js';
 
 class CacheEntry {
-    constructor(public image: CustomImage, public timestamp: number) {
+    constructor(
+        public image: CustomImage,
+        public timestamp: number,
+    ) {
         this.image = image;
         this.timestamp = Date.now();
     }
@@ -42,7 +45,7 @@ const fetchImage = async (url: string): Promise<CustomImage> => {
     // Parse image based on type
     let image: CustomImage;
     if (contentType.includes('image/svg+xml')) {
-        const svg = parseSvg(await response.text());
+        const svg = new SVG(await response.text());
         svg.setAttribute('width', '48');
         svg.setAttribute('height', '48');
         image = {
@@ -62,16 +65,14 @@ const fetchImage = async (url: string): Promise<CustomImage> => {
 };
 
 const fetchWithCache = async (
-    imageUrl: string
+    imageUrl: string,
 ): Promise<CustomImage | null> => {
     // Check cache and return if found
     if (cacheMap.has(imageUrl)) {
         const cacheEntry = cacheMap.get(imageUrl);
         if (cacheEntry && !cacheEntry.isExpired()) {
-            console.log(`Cache hit for ${imageUrl}`);
             return cacheEntry.image;
         } else {
-            console.log(`Cache expired for ${imageUrl}`);
             cacheMap.delete(imageUrl);
         }
     }
@@ -81,7 +82,6 @@ const fetchWithCache = async (
 
     // Cache image
     cacheMap.set(imageUrl, new CacheEntry(image, Date.now()));
-    console.log(`Cached ${imageUrl}`);
 
     // Return image
     return image;

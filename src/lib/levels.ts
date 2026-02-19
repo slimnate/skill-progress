@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-import { parseSvg } from './svg.js';
+import { SVG } from './svg.js';
 import { applyColors } from './colors.js';
 
-const levels = new Map<string, SVGElement>();
+const levels = new Map<string, SVG>();
 
 const getImgPath = (filename: string): string =>
     path.join(process.cwd(), 'img', filename);
@@ -13,9 +13,9 @@ const getImgPath = (filename: string): string =>
  * @param level - The level to load
  * @returns The level SVG
  */
-const loadLevel = (fileName: string): SVGElement => {
+const loadLevel = (fileName: string): SVG => {
     // let svg = parseSvg(fs.readFileSync(getImgPath(`${level}-new.svg`), "utf8"));
-    let svg = parseSvg(fs.readFileSync(getImgPath(`${fileName}.svg`), 'utf8'));
+    let svg = new SVG(fs.readFileSync(getImgPath(`${fileName}.svg`), 'utf8'));
     svg.setAttribute('width', '48');
     svg.setAttribute('height', '8');
     return svg;
@@ -42,8 +42,8 @@ const getLevelSvg = (
     level: number,
     style: string,
     startColor: string | undefined,
-    endColor: string | undefined
-): SVGElement | null => {
+    endColor: string | undefined,
+): SVG | null => {
     let levelSvg = levels.get(`${style}-${level}`);
     if (!levelSvg) {
         return null;

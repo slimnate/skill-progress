@@ -1,4 +1,4 @@
-import { parseSvg } from './svg.js';
+import { SVG } from './svg.js';
 
 const validateColor = (color: string): boolean => {
     return /^([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/.test(color);
@@ -8,20 +8,18 @@ const defaultStartColor = '#fdff60';
 const defaultEndColor = '#00ff41';
 
 const applyColors = (
-    svg: SVGElement,
+    svg: SVG,
     startColor: string | undefined,
-    endColor: string | undefined
-): SVGElement => {
-    let str = `${svg}`;
-
+    endColor: string | undefined,
+): SVG => {
     if (startColor) {
-        str = str.replace(defaultStartColor, `#${startColor}`);
+        svg.replaceColor(defaultStartColor, startColor);
     }
     if (endColor) {
-        str = str.replace(defaultEndColor, `#${endColor}`);
+        svg.replaceColor(defaultEndColor, endColor);
     }
 
-    return parseSvg(str);
+    return svg;
 };
 
 export { validateColor, applyColors };

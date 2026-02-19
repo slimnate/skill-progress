@@ -1,11 +1,11 @@
 import fs from 'fs';
 import path from 'path';
-import { parseSvg } from './svg.js';
+import { SVG } from './svg.js';
 import { fetchWithCache } from './cache.js';
 
 type CustomImage = {
     mimeType: string;
-    data: SVGElement | string;
+    data: SVG | string;
 };
 
 const skillFileMap = new Map<string, string>([
@@ -20,11 +20,11 @@ const getImgPath = (filename: string): string =>
  * Load the custom skills from the file map
  * @returns A map of skill names to SVG elements
  */
-const loadCustomSkills = (): Map<string, SVGElement> => {
-    const skills = new Map<string, SVGElement>();
+const loadCustomSkills = (): Map<string, SVG> => {
+    const skills = new Map<string, SVG>();
     for (const [skill, file] of skillFileMap.entries()) {
         // Parse the SVG and set the width and height to 48px
-        let svg = parseSvg(fs.readFileSync(getImgPath(file), 'utf8'));
+        let svg = new SVG(fs.readFileSync(getImgPath(file), 'utf8'));
         svg.setAttribute('width', '48');
         svg.setAttribute('height', '48');
         skills.set(skill, svg);
@@ -44,7 +44,7 @@ const getSkillSvg = async (skill: string): Promise<CustomImage | null> => {
     if (customSkills.has(skill)) {
         return {
             mimeType: 'image/svg+xml',
-            data: customSkills.get(skill) as SVGElement,
+            data: customSkills.get(skill) as SVG,
         };
     }
 

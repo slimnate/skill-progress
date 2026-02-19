@@ -32,7 +32,6 @@
   },
   "dependencies": {
     "@netlify/functions": "^5.1.2",
-    "express": "^5.2.1",
-    "xmldom": "^0.6.0"
+    "express": "^5.2.1"
   }
 }

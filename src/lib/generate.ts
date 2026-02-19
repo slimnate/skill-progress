@@ -1,9 +1,9 @@
 import type { CustomImage } from './skills.js';
-import { parseSvg } from './svg.js';
+import { SVG } from './svg.js';
 import { getLevelSvg } from './levels.js';
 
 const resizeSvg = (svg: string, size: number): string => {
-    const svgElement = parseSvg(svg);
+    const svgElement = new SVG(svg);
     svgElement.setAttribute('width', size.toString());
     svgElement.setAttribute('height', size.toString());
     return `${svgElement}`;
@@ -26,7 +26,7 @@ const generateProgressSvg = (
     const levelSvg = getLevelSvg(level, style, startColor, endColor);
 
     const imageData = skillImage.mimeType.includes('image/svg+xml')
-        ? `<g transform="translate(0, 0)">${skillImage.data as SVGElement}</g>`
+        ? `<g transform="translate(0, 0)">${skillImage.data}</g>`
         : `<image href="data:${skillImage.mimeType};base64,${skillImage.data}" width="48" height="48" />`;
 
     const levelData = levelSvg
@@ -40,7 +40,8 @@ const generateProgressSvg = (
         </svg>
     `;
 
-    return resizeSvg(svgData, size);
+    const resizedSvg = resizeSvg(svgData, size);
+    return resizedSvg;
 };
 
 export { generateProgressSvg };
