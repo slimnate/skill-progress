@@ -6,7 +6,7 @@ import { applyColors } from './colors.js';
 const levels = new Map<string, SVG>();
 
 const getImgPath = (filename: string): string =>
-    path.join(process.cwd(), 'img', filename);
+    path.join(process.cwd(), 'img', 'levels', filename);
 
 /**
  * Load the level SVG for a given level

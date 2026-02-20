@@ -21,7 +21,7 @@ const skillFileMap = new Map<string, string>([
 ]);
 
 const getImgPath = (filename: string): string =>
-    path.join(process.cwd(), 'img', filename);
+    path.join(process.cwd(), 'img', 'icons', filename);
 
 /**
  * Load the custom skills from the file map
