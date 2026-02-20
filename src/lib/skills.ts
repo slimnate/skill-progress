@@ -11,6 +11,13 @@ type CustomImage = {
 const skillFileMap = new Map<string, string>([
     ['convex', 'Convex-Dark.svg'],
     ['workos', 'WorkOS-Dark.svg'],
+    ['svg', 'SVG-Dark.svg'],
+    ['ios', 'iOS-Dark.svg'],
+    ['ios-light', 'iOS-Light.svg'],
+    ['apple', 'Apple-Dark.svg'],
+    ['apple-light', 'Apple-Light.svg'],
+    ['cursor', 'Cursor-Dark.svg'],
+    ['railway', 'Railway-Dark.svg'],
 ]);
 
 const getImgPath = (filename: string): string =>

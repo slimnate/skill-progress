@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="256"
+   height="256"
+   fill="none"
+   viewBox="0 0 256 256"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="Cursor-Dark.svg"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="2"
+     inkscape:cx="118.75"
+     inkscape:cy="171"
+     inkscape:window-width="1261"
+     inkscape:window-height="1383"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3" />
+  <rect
+     width="256"
+     height="256"
+     fill="#242938"
+     rx="60"
+     id="rect1"
+     style="fill:#333333;fill-opacity:1" />
+  <g
+     id="g5"
+     transform="matrix(0.37500938,0,0,0.37500938,40.484061,27.999999)">
+    <path
+       class="st0"
+       d="m 233.37,266.66 231.16,133.46 c -1.42,2.46 -3.48,4.56 -6.03,6.03 L 242.44,530.89 c -5.61,3.24 -12.53,3.24 -18.14,0 L 8.24,406.15 c -2.55,-1.47 -4.61,-3.57 -6.03,-6.03 z"
+       id="path1"
+       style="fill:#72716d" />
+    <path
+       class="st1"
+       d="M 233.37,0 V 266.66 L 2.21,400.12 C 0.79,397.66 0,394.82 0,391.88 V 141.44 c 0,-5.89 3.14,-11.32 8.24,-14.27 L 224.29,2.43 C 227.1,0.81 230.23,0 233.36,0 Z"
+       id="path2"
+       style="fill:#55544f" />
+    <path
+       class="st3"
+       d="m 464.52,133.2 c -1.42,-2.46 -3.48,-4.56 -6.03,-6.03 L 242.43,2.43 C 239.63,0.81 236.5,0 233.37,0 v 266.66 l 231.16,133.46 c 1.42,-2.46 2.21,-5.3 2.21,-8.24 V 141.44 c 0,-2.95 -0.78,-5.77 -2.21,-8.24 z"
+       id="path3"
+       style="fill:#43413c" />
+    <path
+       class="st4"
+       d="m 448.35,142.54 c 1.31,2.26 1.49,5.16 0,7.74 L 238.52,513.7 c -1.41,2.46 -5.16,1.45 -5.16,-1.38 V 272.84 c 0,-1.91 -0.51,-3.75 -1.44,-5.36 L 448.34,142.53 h 0.01 z"
+       id="path4"
+       style="fill:#d6d5d2" />
+    <path
+       class="st2"
+       d="M 448.35,142.54 231.93,267.49 c -0.92,-1.6 -2.26,-2.96 -3.92,-3.92 L 20.62,143.83 c -2.46,-1.41 -1.45,-5.16 1.38,-5.16 h 419.65 c 2.98,0 5.4,1.61 6.7,3.87 z"
+       id="path5"
+       style="fill:#ffffff" />
+  </g>
+</svg>

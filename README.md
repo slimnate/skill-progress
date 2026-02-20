@@ -159,6 +159,14 @@ Custom icons are those not in the official skill-icons repo (maintainers have st
 | ------- | ----- |
 | `convex` | <img src="img/Convex-Dark.svg" width="48"></img> |
 | `workos` | <img src="img/WorkOS-Dark.svg" width="48"></img> |
+| `svg` | <img src="img/SVG-Dark.svg" width="48"></img> |
+| `ios` | <img src="img/iOS-Dark.svg" width="48"></img> |
+| `ios-light` | <img src="img/iOS-Light.svg" width="48"></img> |
+| `apple` | <img src="img/Apple-Dark.svg" width="48"></img> |
+| `apple-light` | <img src="img/Apple-Light.svg" width="48"></img> |
+| `cursor` | <img src="img/Cursor-Dark.svg" width="48"></img> |
+| `railway` | <img src="img/Railway-Dark.svg" width="48"></img> |
+
 
 ## Planned improvements
 

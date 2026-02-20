@@ -8,7 +8,7 @@
    y="0px"
    viewBox="0 0 256 256"
    xml:space="preserve"
-   sodipodi:docname="WorkOS-Darksvg"
+   sodipodi:docname="WorkOS-Dark.svg"
    width="256"
    height="256"
    inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
@@ -25,10 +25,10 @@
    inkscape:pageopacity="0"
    inkscape:pagecheckerboard="1"
    inkscape:deskcolor="#505050"
-   inkscape:zoom="1.0670927"
-   inkscape:cx="144.78593"
-   inkscape:cy="298.94311"
-   inkscape:window-width="2007"
+   inkscape:zoom="0.53354635"
+   inkscape:cx="-39.35928"
+   inkscape:cy="432.95208"
+   inkscape:window-width="1261"
    inkscape:window-height="1383"
    inkscape:window-x="0"
    inkscape:window-y="0"
@@ -49,7 +49,7 @@
    x="0"
    y="0" /><g
    id="g2"
-   transform="matrix(1.0666667,0,0,1,-39.466668,-16)"><path
+   transform="matrix(0.83333333,0,0,0.78124998,-2.8333328,15.500003)"><path
      class="st0"
      d="m 37,144 c 0,4.6 1.2,9.1 3.5,13 l 42.1,72.9 c 4.3,7.4 10.9,13.5 19,16.2 16.1,5.4 32.7,-1.5 40.6,-15.3 L 152.4,213.2 112.4,144 154.7,70.6 164.8,53 c 3,-5.3 7.1,-9.6 11.9,-13 h -4.4 -60.9 c -11.4,0 -22,6.1 -27.7,16 l -43.3,75 c -2.2,3.9 -3.4,8.4 -3.4,13 z"
      id="path1" /><path
