@@ -24,6 +24,7 @@ const skillFileMap = new Map<string, string>([
     ['socketio', 'SocketIO-Dark.svg'],
     ['sourcetree', 'SourceTree.svg'],
     ['wpf', 'WPF-Dark.svg'],
+    ['jekyll', 'Jekyll-Dark.svg'],
 ]);
 
 const getImgPath = (filename: string): string =>
