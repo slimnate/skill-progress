@@ -18,6 +18,12 @@ const skillFileMap = new Map<string, string>([
     ['apple-light', 'Apple-Light.svg'],
     ['cursor', 'Cursor-Dark.svg'],
     ['railway', 'Railway-Dark.svg'],
+    ['chrome', 'Chrome-Dark.svg'],
+    ['jira', 'Jira.svg'],
+    ['salesforce', 'Salesforce-Dark.svg'],
+    ['socketio', 'SocketIO-Dark.svg'],
+    ['sourcetree', 'SourceTree.svg'],
+    ['wpf', 'WPF-Dark.svg'],
 ]);
 
 const getImgPath = (filename: string): string =>
