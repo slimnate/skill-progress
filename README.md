@@ -166,6 +166,13 @@ Custom icons are those not in the official skill-icons repo (maintainers have st
 | `apple-light` | <img src="img/icons/Apple-Light.svg" width="48"></img> |
 | `cursor` | <img src="img/icons/Cursor-Dark.svg" width="48"></img> |
 | `railway` | <img src="img/icons/Railway-Dark.svg" width="48"></img> |
+| `chrome` | <img src="img/icons/Chrome-Dark.svg" width="48"></img> |
+| `jira` | <img src="img/icons/Jira.svg" width="48"></img> |
+| `salesforce` | <img src="img/icons/Salesforce-Dark.svg" width="48"></img> |
+| `socketio` | <img src="img/icons/SocketIO-Dark.svg" width="48"></img> |
+| `sourcetree` | <img src="img/icons/SourceTree.svg" width="48"></img> |
+| `wpf` | <img src="img/icons/WPF-Dark.svg" width="48"></img> |
+| `jekyll` | <img src="img/icons/Jekyll-Dark.svg" width="48"></img> |
 
 
 ## Planned improvements
