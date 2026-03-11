@@ -11,15 +11,15 @@ Example:
 
 ## Parameters
 
-| Parameter     | Type   | Required | Description |
-| ------------- | ------ | -------- | ----------- |
-| `skill`       | string | one of   | Skill name from [skill-icons](https://github.com/tandpfun/skill-icons) or a custom skill (e.g. `convex`). Either `skill` or `image` must be provided. |
-| `image`       | string | one of   | URL of an arbitrary icon image. Either `skill` or `image` must be provided. |
-| `level`       | number | no       | Proficiency level from **1** to **5**. If omitted, the output contains just the icon (no progress bar). |
-| `size`        | number | no       | Output size in pixels. **16–512**, default **48**. |
-| `style`       | string | no       | Progress bar style. One of `rounded` (default) or `flat`. |
-| `startColor`  | string | no*      | Progress bar gradient start color: 3 or 6 digit hex **without** `#`. Must be used together with `endColor`. |
-| `endColor`    | string | no*      | Progress bar gradient end color: 3 or 6 digit hex **without** `#`. Must be used together with `startColor`. |
+| Parameter    | Type   | Required | Description                                                                                                                                           |
+| ------------ | ------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `skill`      | string | one of   | Skill name from [skill-icons](https://github.com/tandpfun/skill-icons) or a custom skill (e.g. `convex`). Either `skill` or `image` must be provided. |
+| `image`      | string | one of   | URL of an arbitrary icon image. Either `skill` or `image` must be provided.                                                                           |
+| `level`      | number | no       | Proficiency level from **1** to **5**. If omitted, the output contains just the icon (no progress bar).                                               |
+| `size`       | number | no       | Output size in pixels. **16–512**, default **48**.                                                                                                    |
+| `style`      | string | no       | Progress bar style. One of `rounded` (default) or `flat`.                                                                                             |
+| `startColor` | string | no\*     | Progress bar gradient start color: 3 or 6 digit hex **without** `#`. Must be used together with `endColor`.                                           |
+| `endColor`   | string | no\*     | Progress bar gradient end color: 3 or 6 digit hex **without** `#`. Must be used together with `startColor`.                                           |
 
 \* `startColor` and `endColor` must both be provided or both omitted.
 
@@ -155,29 +155,29 @@ npm run dev
 
 Custom icons are those not in the official skill-icons repo (maintainers have stopped accepting PRs). Additional icons are welcome via PRs to this repo.
 
-| Name    | Image |
-| ------- | ----- |
-| `convex` | <img src="img/icons/Convex-Dark.svg" width="48"></img> |
-| `workos` | <img src="img/icons/WorkOS-Dark.svg" width="48"></img> |
-| `svg` | <img src="img/icons/SVG-Dark.svg" width="48"></img> |
-| `ios` | <img src="img/icons/iOS-Dark.svg" width="48"></img> |
-| `ios-light` | <img src="img/icons/iOS-Light.svg" width="48"></img> |
-| `apple` | <img src="img/icons/Apple-Dark.svg" width="48"></img> |
-| `apple-light` | <img src="img/icons/Apple-Light.svg" width="48"></img> |
-| `cursor` | <img src="img/icons/Cursor-Dark.svg" width="48"></img> |
-| `railway` | <img src="img/icons/Railway-Dark.svg" width="48"></img> |
-| `chrome` | <img src="img/icons/Chrome-Dark.svg" width="48"></img> |
-| `jira` | <img src="img/icons/Jira.svg" width="48"></img> |
-| `salesforce` | <img src="img/icons/Salesforce-Dark.svg" width="48"></img> |
-| `socketio` | <img src="img/icons/SocketIO-Dark.svg" width="48"></img> |
-| `sourcetree` | <img src="img/icons/SourceTree.svg" width="48"></img> |
-| `wpf` | <img src="img/icons/WPF-Dark.svg" width="48"></img> |
-| `jekyll` | <img src="img/icons/Jekyll-Dark.svg" width="48"></img> |
-
+| Name          | Image                                                      |
+| ------------- | ---------------------------------------------------------- |
+| `convex`      | <img src="img/icons/Convex-Dark.svg" width="48"></img>     |
+| `workos`      | <img src="img/icons/WorkOS-Dark.svg" width="48"></img>     |
+| `svg`         | <img src="img/icons/SVG-Dark.svg" width="48"></img>        |
+| `ios`         | <img src="img/icons/iOS-Dark.svg" width="48"></img>        |
+| `ios-light`   | <img src="img/icons/iOS-Light.svg" width="48"></img>       |
+| `apple`       | <img src="img/icons/Apple-Dark.svg" width="48"></img>      |
+| `apple-light` | <img src="img/icons/Apple-Light.svg" width="48"></img>     |
+| `cursor`      | <img src="img/icons/Cursor-Dark.svg" width="48"></img>     |
+| `railway`     | <img src="img/icons/Railway-Dark.svg" width="48"></img>    |
+| `chrome`      | <img src="img/icons/Chrome-Dark.svg" width="48"></img>     |
+| `jira`        | <img src="img/icons/Jira.svg" width="48"></img>            |
+| `salesforce`  | <img src="img/icons/Salesforce-Dark.svg" width="48"></img> |
+| `socketio`    | <img src="img/icons/SocketIO-Dark.svg" width="48"></img>   |
+| `sourcetree`  | <img src="img/icons/SourceTree.svg" width="48"></img>      |
+| `wpf`         | <img src="img/icons/WPF-Dark.svg" width="48"></img>        |
+| `jekyll`      | <img src="img/icons/Jekyll-Dark.svg" width="48"></img>     |
 
 ## Planned improvements
 
 Done:
+
 - [x] Allow custom progress bar colors
 - [x] Custom output size (generate at 48×48 then resize)
 - [x] Cache skill-icons
@@ -185,17 +185,22 @@ Done:
 - [x] Allow icon-only output when `level` is omitted
 
 New Features:
+
 - [ ] Add more custom icons (can scrape the PRs on the skill-icons repo and add all the icons that the maintainer won't accept on that project, also can add icons from [https://dashboardicons.com/](https://dashboardicons.com/))
 - [ ] Allow for labels and use of emojis as progress bar [https://stackoverflow.com/questions/24768630/is-there-a-way-to-show-a-progressbar-on-github-wiki/61857070#61857070](https://stackoverflow.com/questions/24768630/is-there-a-way-to-show-a-progressbar-on-github-wiki/61857070#61857070)
 - [ ] Generate SVGs from scratch so that any percentage can be used, instead of just the 1-5 steps.
 - [ ] Add support for additional input image types (webp, etc.)
 - [ ] Vertical progress bar option (to left/right of image).
 - [ ] Base route should redirect to project homepage on github instead of 404
+- [ ] Test suite to verify functionality of all params.
 
 Cache:
+
 - [ ] Store expiration time of cache instead of calculating on every request.
 - [ ] Garbage collect expired cache entries even if they have not been requested and refreshed.
 - [ ] Upper bounds on cache size, delete oldest entries when size limit reached.
+- [ ] Size limit for individual cache items (eg. caching many large external images)
 
 Maintenance:
+
 - [ ] Create YAML forms for issue template [https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms) example: [https://github.com/simple-icons/simple-icons/blob/develop/.github/ISSUE_TEMPLATE/icon_request.yml](https://github.com/simple-icons/simple-icons/blob/develop/.github/ISSUE_TEMPLATE/icon_request.yml)
