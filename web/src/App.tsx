@@ -1,18 +1,18 @@
 const examples = [
     {
-        label: 'JavaScript - level 4',
+        label: 'JavaScript - Level 4',
         url: 'https://skill-progress-production.up.railway.app/progress?skill=js&level=4&size=64',
     },
     {
-        label: 'React - flat style',
+        label: 'React - Flat Style',
         url: 'https://skill-progress-production.up.railway.app/progress?skill=react&level=4&style=flat&size=64',
     },
     {
-        label: 'Convex - custom colors',
+        label: 'Convex - Custom Colors',
         url: 'https://skill-progress-production.up.railway.app/progress?skill=convex&level=4&size=64&startColor=667eea&endColor=764ba2',
     },
     {
-        label: 'TypeScript - icon only',
+        label: 'TypeScript - Icon Only',
         url: 'https://skill-progress-production.up.railway.app/progress?skill=ts&size=64',
     },
 ];
@@ -102,8 +102,8 @@ export default function App() {
 
             <main>
                 <section className="hero">
-                    <p className="eyebrow">SVG badge microservice</p>
-                    <h1>Show your skills with visual progress badges.</h1>
+                    <p className='eyebrow'>SVG Badge Microservice</p>
+                    <h1>Show Your Skills With Visual Progress Badges.</h1>
                     <p className="hero-copy">
                         Skill Progress creates embeddable SVG images from a
                         skill icon or custom image URL, with optional
@@ -122,8 +122,8 @@ export default function App() {
                     </div>
                 </section>
 
-                <section className="feature-section">
-                    <h2>What it can do</h2>
+                <section className='feature-section'>
+                    <h2>What It Can Do</h2>
                     <div className="feature-grid">
                         {features.map((feature) => (
                             <article
@@ -145,8 +145,8 @@ export default function App() {
                     </div>
                 </section>
 
-                <section className="examples-section">
-                    <h2>Examples in action</h2>
+                <section className='examples-section'>
+                    <h2>Examples in Action</h2>
                     <div className="examples-grid">
                         {examples.map((example) => (
                             <article className="example-card" key={example.url}>
@@ -158,8 +158,8 @@ export default function App() {
                     </div>
                 </section>
 
-                <section className="quickstart-section">
-                    <h2>Quick start</h2>
+                <section className='quickstart-section'>
+                    <h2>Quick Start</h2>
                     <div className='parameter-table-wrapper'>
                         <table className='parameter-table'>
                             <thead>
