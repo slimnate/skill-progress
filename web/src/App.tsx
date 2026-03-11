@@ -118,34 +118,37 @@ type BuilderFields = {
 function HomePage() {
     return (
         <>
-            <section className='hero'>
-                <p className='eyebrow'>SVG Badge Microservice</p>
+            <section className="hero">
+                <p className="eyebrow">SVG Badge Microservice</p>
                 <h1>Show Your Skills With Visual Progress Badges.</h1>
-                <p className='hero-copy'>
+                <p className="hero-copy">
                     Skill Progress creates embeddable SVG images from a skill
                     icon or custom image URL, with optional proficiency bars to
                     communicate confidence at a glance.
                 </p>
-                <div className='hero-actions'>
-                    <a className='button button-primary' href='/builder'>
+                <div className="hero-actions">
+                    <a className="button button-primary" href="/builder">
                         Open Builder
                     </a>
                     <a
-                        className='button button-secondary'
-                        href='/progress?skill=js&level=4'
+                        className="button button-secondary"
+                        href="/progress?skill=js&level=4"
                     >
                         Try API Example
                     </a>
                 </div>
             </section>
 
-            <section className='feature-section'>
+            <section className="feature-section">
                 <h2>What It Can Do</h2>
-                <div className='feature-grid'>
+                <div className="feature-grid">
                     {features.map((feature) => (
-                        <article className='feature-card' key={feature.title}>
-                            <div className='feature-card-header'>
-                                <span className='feature-icon' aria-hidden='true'>
+                        <article className="feature-card" key={feature.title}>
+                            <div className="feature-card-header">
+                                <span
+                                    className="feature-icon"
+                                    aria-hidden="true"
+                                >
                                     {feature.icon}
                                 </span>
                                 <h3>{feature.title}</h3>
@@ -156,11 +159,11 @@ function HomePage() {
                 </div>
             </section>
 
-            <section className='examples-section'>
+            <section className="examples-section">
                 <h2>Examples in Action</h2>
-                <div className='examples-grid'>
+                <div className="examples-grid">
                     {examples.map((example) => (
-                        <article className='example-card' key={example.url}>
+                        <article className="example-card" key={example.url}>
                             <h3>{example.label}</h3>
                             <img src={example.url} alt={example.label} />
                             <code>{example.url}</code>
@@ -169,10 +172,10 @@ function HomePage() {
                 </div>
             </section>
 
-            <section className='quickstart-section'>
+            <section className="quickstart-section">
                 <h2>Quick Start</h2>
-                <div className='parameter-table-wrapper'>
-                    <table className='parameter-table'>
+                <div className="parameter-table-wrapper">
+                    <table className="parameter-table">
                         <thead>
                             <tr>
                                 <th>Parameter</th>
@@ -202,32 +205,32 @@ function HomePage() {
                 </pre>
             </section>
 
-            <section className='icons-section'>
+            <section className="icons-section">
                 <h2>Icons</h2>
-                <p className='icons-copy'>
+                <p className="icons-copy">
                     Skill Progress supports the full icon catalog from{' '}
                     <a
-                        href='https://github.com/tandpfun/skill-icons?tab=readme-ov-file#icons-list'
-                        target='_blank'
-                        rel='noreferrer'
+                        href="https://github.com/tandpfun/skill-icons?tab=readme-ov-file#icons-list"
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         skill-icons
                     </a>{' '}
                     via the <code>skill</code> parameter.
                 </p>
-                <p className='icons-copy'>
+                <p className="icons-copy">
                     You can also use arbitrary image URLs with the{' '}
                     <code>image</code> parameter, for example:{' '}
                     <code>/progress?image=https://example.com/my-icon.svg</code>
                     .
                 </p>
-                <p className='icons-copy'>
+                <p className="icons-copy">
                     It also includes these custom icons available in this
                     repository:
                 </p>
-                <div className='icons-grid'>
+                <div className="icons-grid">
                     {customIcons.map((icon) => (
-                        <article className='icon-card' key={icon.name}>
+                        <article className="icon-card" key={icon.name}>
                             <img
                                 src={`/icons/${icon.file}`}
                                 alt={`${icon.name} icon`}
@@ -293,9 +296,7 @@ function BuilderPage() {
         () => new URL('/progress', window.location.origin).toString(),
         [],
     );
-    const previewUrl = queryString
-        ? `${progressBaseUrl}?${queryString}`
-        : '';
+    const previewUrl = queryString ? `${progressBaseUrl}?${queryString}` : '';
     const fullUrl = previewUrl;
 
     const validationMessage = !hasSkillOrImage
@@ -312,7 +313,9 @@ function BuilderPage() {
             await navigator.clipboard.writeText(fullUrl);
             setCopyMessage('Link copied to clipboard.');
         } catch {
-            setCopyMessage('Unable to copy automatically. Copy the link field.');
+            setCopyMessage(
+                'Unable to copy automatically. Copy the link field.',
+            );
         }
     }
 
@@ -325,132 +328,152 @@ function BuilderPage() {
     }
 
     return (
-        <section className='builder-page'>
+        <section className="builder-page">
             <h1>Badge Builder</h1>
-            <p className='builder-copy'>
+            <p className="builder-copy">
                 Set parameters, preview the output, and copy a ready-to-share
                 link.
             </p>
 
-            <div className='builder-layout'>
-                <article className='builder-card'>
+            <div className="builder-layout">
+                <article className="builder-card">
                     <h2>Parameters</h2>
-                    <form className='builder-form' onSubmit={(e) => e.preventDefault()}>
-                        <label htmlFor='skill'>skill</label>
+                    <form
+                        className="builder-form"
+                        onSubmit={(e) => e.preventDefault()}
+                    >
+                        <label htmlFor="skill">skill</label>
                         <input
-                            id='skill'
-                            type='text'
+                            id="skill"
+                            type="text"
                             value={fields.skill}
-                            onChange={(e) => updateField('skill', e.target.value)}
-                            placeholder='js, react, convex'
+                            onChange={(e) =>
+                                updateField('skill', e.target.value)
+                            }
+                            placeholder="js, react, convex"
                         />
 
-                        <label htmlFor='image'>image</label>
+                        <label htmlFor="image">image</label>
                         <input
-                            id='image'
-                            type='url'
+                            id="image"
+                            type="url"
                             value={fields.image}
-                            onChange={(e) => updateField('image', e.target.value)}
-                            placeholder='https://example.com/icon.svg'
+                            onChange={(e) =>
+                                updateField('image', e.target.value)
+                            }
+                            placeholder="https://example.com/icon.svg"
                         />
 
-                        <label htmlFor='level'>level</label>
+                        <label htmlFor="level">level</label>
                         <select
-                            id='level'
+                            id="level"
                             value={fields.level}
-                            onChange={(e) => updateField('level', e.target.value)}
+                            onChange={(e) =>
+                                updateField('level', e.target.value)
+                            }
                         >
-                            <option value=''>icon only</option>
-                            <option value='1'>1</option>
-                            <option value='2'>2</option>
-                            <option value='3'>3</option>
-                            <option value='4'>4</option>
-                            <option value='5'>5</option>
+                            <option value="">icon only</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                         </select>
 
-                        <label htmlFor='size'>size</label>
+                        <label htmlFor="size">size</label>
                         <input
-                            id='size'
-                            type='number'
-                            min='16'
-                            max='512'
+                            id="size"
+                            type="number"
+                            min="16"
+                            max="512"
                             value={fields.size}
-                            onChange={(e) => updateField('size', e.target.value)}
+                            onChange={(e) =>
+                                updateField('size', e.target.value)
+                            }
                         />
 
-                        <label htmlFor='style'>style</label>
+                        <label htmlFor="style">style</label>
                         <select
-                            id='style'
+                            id="style"
                             value={fields.style}
-                            onChange={(e) => updateField('style', e.target.value)}
+                            onChange={(e) =>
+                                updateField('style', e.target.value)
+                            }
                         >
-                            <option value='rounded'>rounded</option>
-                            <option value='flat'>flat</option>
+                            <option value="rounded">rounded</option>
+                            <option value="flat">flat</option>
                         </select>
 
-                        <label htmlFor='startColor'>startColor</label>
+                        <label htmlFor="startColor">startColor</label>
                         <input
-                            id='startColor'
-                            type='text'
+                            id="startColor"
+                            type="text"
                             value={fields.startColor}
                             onChange={(e) =>
                                 updateField('startColor', e.target.value)
                             }
-                            placeholder='ff6b6b'
+                            placeholder="ff6b6b"
                         />
 
-                        <label htmlFor='endColor'>endColor</label>
+                        <label htmlFor="endColor">endColor</label>
                         <input
-                            id='endColor'
-                            type='text'
+                            id="endColor"
+                            type="text"
                             value={fields.endColor}
-                            onChange={(e) => updateField('endColor', e.target.value)}
-                            placeholder='4ecdc4'
+                            onChange={(e) =>
+                                updateField('endColor', e.target.value)
+                            }
+                            placeholder="4ecdc4"
                         />
                     </form>
                     {validationMessage ? (
-                        <p className='builder-help builder-help-error'>
+                        <p className="builder-help builder-help-error">
                             {validationMessage}
                         </p>
                     ) : (
-                        <p className='builder-help'>
+                        <p className="builder-help">
                             Leave <code>level</code> empty for icon-only mode.
                         </p>
                     )}
                 </article>
 
-                <article className='builder-card'>
+                <article className="builder-card">
                     <h2>Preview</h2>
-                    <div className='builder-preview'>
+                    <div className="builder-preview">
                         {previewUrl ? (
-                            <img src={previewUrl} alt='Generated badge preview' />
+                            <img
+                                src={previewUrl}
+                                alt="Generated badge preview"
+                            />
                         ) : (
-                            <p className='builder-empty'>
+                            <p className="builder-empty">
                                 Add required values to preview your badge.
                             </p>
                         )}
                     </div>
 
                     <h2>Copy Link</h2>
-                    <label htmlFor='builder-url' className='builder-url-label'>
+                    <label htmlFor="builder-url" className="builder-url-label">
                         Shareable URL
                     </label>
                     <input
-                        id='builder-url'
-                        type='text'
+                        id="builder-url"
+                        type="text"
                         readOnly
                         value={fullUrl}
-                        className='builder-url'
+                        className="builder-url"
                     />
                     <button
-                        type='button'
-                        className='button button-primary builder-copy-button'
+                        type="button"
+                        className="button button-primary builder-copy-button"
                         disabled={!fullUrl}
                         onClick={handleCopyClick}
                     >
                         Copy link
                     </button>
-                    {copyMessage ? <p className='builder-help'>{copyMessage}</p> : null}
+                    {copyMessage ? (
+                        <p className="builder-help">{copyMessage}</p>
+                    ) : null}
                 </article>
             </div>
         </section>
@@ -467,11 +490,11 @@ export default function App() {
             <header>
                 <nav>
                     <ul>
-                        <li className='navbar-logo'>
-                            <a href='/'>skill-progress</a>
+                        <li className="navbar-logo">
+                            <a href="/">skill-progress</a>
                         </li>
-                        <li className='navbar-item'>
-                            <a href='/builder'>Builder</a>
+                        <li className="navbar-item">
+                            <a href="/builder">Builder</a>
                         </li>
                     </ul>
                 </nav>
