@@ -4,6 +4,7 @@ import path from 'path';
 
 export default defineConfig({
     root: path.resolve(__dirname),
+    publicDir: path.resolve(__dirname, '../img'),
     plugins: [react()],
     build: {
         outDir: path.resolve(__dirname, 'dist'),

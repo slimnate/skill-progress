@@ -84,6 +84,25 @@ const parameters = [
     },
 ];
 
+const customIcons = [
+    { name: 'convex', file: 'Convex-Dark.svg' },
+    { name: 'workos', file: 'WorkOS-Dark.svg' },
+    { name: 'svg', file: 'SVG-Dark.svg' },
+    { name: 'ios', file: 'iOS-Dark.svg' },
+    { name: 'ios-light', file: 'iOS-Light.svg' },
+    { name: 'apple', file: 'Apple-Dark.svg' },
+    { name: 'apple-light', file: 'Apple-Light.svg' },
+    { name: 'cursor', file: 'Cursor-Dark.svg' },
+    { name: 'railway', file: 'Railway-Dark.svg' },
+    { name: 'chrome', file: 'Chrome-Dark.svg' },
+    { name: 'jira', file: 'Jira.svg' },
+    { name: 'salesforce', file: 'Salesforce-Dark.svg' },
+    { name: 'socketio', file: 'SocketIO-Dark.svg' },
+    { name: 'sourcetree', file: 'SourceTree.svg' },
+    { name: 'wpf', file: 'WPF-Dark.svg' },
+    { name: 'jekyll', file: 'Jekyll-Dark.svg' },
+];
+
 export default function App() {
     return (
         <>
@@ -189,6 +208,44 @@ export default function App() {
                             }
                         </code>
                     </pre>
+                </section>
+
+                <section className='icons-section'>
+                    <h2>Icons</h2>
+                    <p className='icons-copy'>
+                        Skill Progress supports the full icon catalog from{' '}
+                        <a
+                            href='https://github.com/tandpfun/skill-icons?tab=readme-ov-file#icons-list'
+                            target='_blank'
+                            rel='noreferrer'
+                        >
+                            skill-icons
+                        </a>{' '}
+                        via the <code>skill</code> parameter.
+                    </p>
+                    <p className='icons-copy'>
+                        You can also use arbitrary image URLs with the{' '}
+                        <code>image</code> parameter, for example:{' '}
+                        <code>
+                            /progress?image=https://example.com/my-icon.svg
+                        </code>
+                        .
+                    </p>
+                    <p className='icons-copy'>
+                        It also includes these custom icons available in this
+                        repository:
+                    </p>
+                    <div className='icons-grid'>
+                        {customIcons.map((icon) => (
+                            <article className='icon-card' key={icon.name}>
+                                <img
+                                    src={`/icons/${icon.file}`}
+                                    alt={`${icon.name} icon`}
+                                />
+                                <p>{icon.name}</p>
+                            </article>
+                        ))}
+                    </div>
                 </section>
             </main>
 
