@@ -16,9 +16,11 @@ export default function HeroSection() {
                 </Link>
                 <a
                     className='button button-secondary'
-                    href='/progress?skill=js&level=4'
+                    href='https://github.com/slimnate/skill-progress#readme'
+                    target='_blank'
+                    rel='noreferrer'
                 >
-                    Try API Example
+                    View on GitHub
                 </a>
             </div>
         </section>
