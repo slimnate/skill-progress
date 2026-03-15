@@ -1,4 +1,4 @@
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { Link, NavLink, Route, Routes } from 'react-router-dom';
 import BuilderPage from './components/builder/BuilderPage';
 import HomePage from './components/home/HomePage';
 
@@ -9,8 +9,13 @@ export default function App() {
                 <nav>
                     <ul>
                         <li className='navbar-logo'>
-                            <NavLink to='/' end>
+                            <Link to='/'>
                                 skill-progress
+                            </Link>
+                        </li>
+                        <li className='navbar-item'>
+                            <NavLink to='/' end>
+                                Home
                             </NavLink>
                         </li>
                         <li className='navbar-item'>

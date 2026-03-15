@@ -55,7 +55,7 @@ nav ul {
     gap: 1rem;
 }
 
-nav a {
+nav .navbar-item a {
     color: #f9fafb;
     text-decoration: none;
     font-weight: 700;
@@ -65,16 +65,23 @@ nav a {
     transition: background-color 0.2s ease-in-out;
 }
 
-nav a:hover {
+nav .navbar-item a:hover {
     background-color: #374151;
 }
 
-nav a[aria-current='page'] {
+nav .navbar-item a[aria-current='page'] {
     background-color: #374151;
 }
 
 .navbar-logo {
     margin-right: auto;
+}
+
+.navbar-logo a {
+    color: #f9fafb;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
 }
 
 .hero {
