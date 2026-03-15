@@ -15,7 +15,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "concurrently -k -n server,web -c green,blue \"npm run dev:server\" \"npm run dev:web\"",
+    "dev:server": "tsx watch src/server.ts",
     "dev:web": "vite --config web/vite.config.ts",
     "build:web": "vite build --config web/vite.config.ts",
     "build:server": "tsc",
@@ -32,6 +33,7 @@
     "@types/react-dom": "^19.2.3",
     "@types/xmldom": "^0.1.34",
     "@vitejs/plugin-react": "^5.1.4",
+    "concurrently": "^9.2.1",
     "copyfiles": "^2.4.1",
     "netlify-cli": "^22.0.0",
     "tsx": "^4.21.0",
