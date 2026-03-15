@@ -69,6 +69,10 @@ nav a:hover {
     background-color: #374151;
 }
 
+nav a[aria-current='page'] {
+    background-color: #374151;
+}
+
 .navbar-logo {
     margin-right: auto;
 }
