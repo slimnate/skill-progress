@@ -44,12 +44,13 @@ const getLevelSvg = (
     startColor: string | undefined,
     endColor: string | undefined,
 ): SVG | null => {
-    let levelSvg = levels.get(`${style}-${level}`);
+    const levelSvg = levels.get(`${style}-${level}`);
     if (!levelSvg) {
         return null;
     }
 
-    return applyColors(levelSvg, startColor, endColor);
+    const levelCopy = new SVG(levelSvg.toString());
+    return applyColors(levelCopy, startColor, endColor);
 };
 
 export { getLevelSvg };

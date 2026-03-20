@@ -1,9 +1,15 @@
 import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { handleProgress } from './handlers/progress.js';
 import type { Request, Response } from 'express';
 
 const app = express();
 const port = 3000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const webDist = path.resolve(__dirname, '../web/dist');
 
 app.get('/progress', async (req: Request, res: Response) => {
     const q = req.query;
@@ -27,6 +33,11 @@ app.get('/progress', async (req: Request, res: Response) => {
     } else {
         res.send(result.body);
     }
+});
+
+app.use(express.static(webDist));
+app.get('/{*path}', (_req, res) => {
+    res.sendFile(path.join(webDist, 'index.html'));
 });
 
 app.listen(port, () => {

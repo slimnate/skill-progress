@@ -15,9 +15,11 @@ class SVG {
     }
 
     replaceColor(oldColor: string, newColor: string): void {
+        const normalizedOldColor = oldColor.replace(/^#/, '');
+        const normalizedNewColor = newColor.replace(/^#/, '');
         this.source = this.source.replace(
-            new RegExp(`#${oldColor}`),
-            `#${newColor}`,
+            new RegExp(`#${normalizedOldColor}\\b`, 'gi'),
+            `#${normalizedNewColor}`,
         );
     }
 
