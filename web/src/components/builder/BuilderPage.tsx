@@ -1,25 +1,63 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import BuilderForm from './BuilderForm';
 import BuilderLinkPanel from './BuilderLinkPanel';
 import BuilderPreview from './BuilderPreview';
-import type { BuilderFields } from './builderTypes';
+import {
+    builderFieldsToSearchParams,
+    DEFAULT_FIELDS,
+    parseBuilderSearchParams,
+} from './builderUrlParams';
+import type { BuilderFields, BuilderSource } from './builderTypes';
 import { useBuilderBadge } from './useBuilderBadge';
 
-const initialFields: BuilderFields = {
-    skill: 'js',
-    image: '',
-    level: '4',
-    size: '64',
-    style: 'rounded',
-    startColor: '',
-    endColor: '',
-};
+function initialFromLocation(): {
+    fields: BuilderFields;
+    source: BuilderSource;
+} {
+    if (typeof window === 'undefined') {
+        return { fields: DEFAULT_FIELDS, source: 'skill' };
+    }
+    return parseBuilderSearchParams(
+        new URLSearchParams(window.location.search),
+    );
+}
 
 export default function BuilderPage() {
-    const [fields, setFields] = useState<BuilderFields>(initialFields);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [initialBundle] = useState(() => initialFromLocation());
+    const [fields, setFields] = useState<BuilderFields>(initialBundle.fields);
+    const [source, setSource] = useState<BuilderSource>(initialBundle.source);
     const [copyMessage, setCopyMessage] = useState('');
+    const sourceRef = useRef(source);
+    const skipParseFromUrl = useRef(false);
+
+    sourceRef.current = source;
+
     const { previewUrl, validationMessage } = useBuilderBadge(fields);
     const fullUrl = previewUrl;
+
+    function pushUrl(nextFields: BuilderFields, nextSource: BuilderSource) {
+        skipParseFromUrl.current = true;
+        setSearchParams(
+            builderFieldsToSearchParams(nextFields, nextSource),
+            { replace: true },
+        );
+    }
+
+    useEffect(() => {
+        if (skipParseFromUrl.current) {
+            skipParseFromUrl.current = false;
+            return;
+        }
+        const parsed = parseBuilderSearchParams(searchParams);
+        setFields(parsed.fields);
+        setSource(parsed.source);
+    }, [searchParams]);
+
+    useEffect(() => {
+        pushUrl(initialBundle.fields, initialBundle.source);
+    }, []);
 
     async function handleCopyClick() {
         if (!fullUrl) {
@@ -37,7 +75,27 @@ export default function BuilderPage() {
         key: K,
         value: BuilderFields[K],
     ) {
-        setFields((prev) => ({ ...prev, [key]: value }));
+        setFields((prev) => {
+            const next = { ...prev, [key]: value };
+            pushUrl(next, sourceRef.current);
+            return next;
+        });
+        setCopyMessage('');
+    }
+
+    function onSourceChange(next: BuilderSource) {
+        if (next === sourceRef.current) {
+            return;
+        }
+        setSource(next);
+        setFields((prev) => {
+            const f =
+                next === 'skill'
+                    ? { ...prev, image: '' }
+                    : { ...prev, skill: '' };
+            pushUrl(f, next);
+            return f;
+        });
         setCopyMessage('');
     }
 
@@ -53,6 +111,8 @@ export default function BuilderPage() {
                 <BuilderForm
                     fields={fields}
                     updateField={updateField}
+                    source={source}
+                    onSourceChange={onSourceChange}
                     validationMessage={validationMessage}
                 />
 

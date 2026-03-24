@@ -20,7 +20,7 @@ export default function HeroSection() {
                     target='_blank'
                     rel='noreferrer'
                 >
-                    View on GitHub
+                    Read the Docs
                 </a>
             </div>
         </section>

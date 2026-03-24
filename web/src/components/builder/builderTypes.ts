@@ -1,3 +1,5 @@
+export type BuilderSource = 'skill' | 'image';
+
 export type BuilderFields = {
     skill: string;
     image: string;

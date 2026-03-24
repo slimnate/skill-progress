@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { CustomIcon } from './homeData';
 
 type IconsSectionProps = {
@@ -33,6 +34,12 @@ export default function IconsSection({ customIcons }: IconsSectionProps) {
                     <article className='icon-card' key={icon.name}>
                         <img src={`/icons/${icon.file}`} alt={`${icon.name} icon`} />
                         <p>{icon.name}</p>
+                        <Link
+                            className='icon-card-link'
+                            to={`/builder?skill=${encodeURIComponent(icon.name)}`}
+                        >
+                            Build
+                        </Link>
                     </article>
                 ))}
             </div>
