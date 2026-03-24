@@ -1,4 +1,8 @@
-import type { BuilderFields } from './builderTypes';
+import { useCallback, useState } from 'react';
+import type { SkillCategory } from '../../data/skillIconMeta';
+import { pushRecentSkillSlug, readRecentSkillSlugs } from './builderRecents';
+import type { BuilderFields, BuilderSource } from './builderTypes';
+import SkillCombobox from './SkillCombobox';
 
 type BuilderFormProps = {
     fields: BuilderFields;
@@ -6,35 +10,97 @@ type BuilderFormProps = {
         key: K,
         value: BuilderFields[K],
     ) => void;
+    source: BuilderSource;
+    onSourceChange: (next: BuilderSource) => void;
     validationMessage: string;
 };
 
 export default function BuilderForm({
     fields,
     updateField,
+    source,
+    onSourceChange,
     validationMessage,
 }: BuilderFormProps) {
+    const [categoryFilter, setCategoryFilter] = useState<SkillCategory | null>(
+        null,
+    );
+    const [recentSlugs, setRecentSlugs] = useState(readRecentSkillSlugs);
+
+    const refreshRecents = useCallback(() => {
+        setRecentSlugs(readRecentSkillSlugs());
+    }, []);
+
+    const onSkillPicked = useCallback(
+        (slug: string) => {
+            pushRecentSkillSlug(slug);
+            refreshRecents();
+        },
+        [refreshRecents],
+    );
+
     return (
         <article className='builder-card'>
             <h2>Parameters</h2>
             <form className='builder-form' onSubmit={(e) => e.preventDefault()}>
-                <label htmlFor='skill'>skill</label>
-                <input
-                    id='skill'
-                    type='text'
-                    value={fields.skill}
-                    onChange={(e) => updateField('skill', e.target.value)}
-                    placeholder='js, react, convex'
-                />
+                <span className='builder-form-label-text'>Badge source</span>
+                <div
+                    className='builder-source-toggle'
+                    role='group'
+                    aria-label='Badge source'
+                >
+                    <button
+                        type='button'
+                        className={
+                            source === 'skill'
+                                ? 'builder-toggle-btn builder-toggle-btn-active'
+                                : 'builder-toggle-btn'
+                        }
+                        aria-pressed={source === 'skill'}
+                        onClick={() => onSourceChange('skill')}
+                    >
+                        Skill
+                    </button>
+                    <button
+                        type='button'
+                        className={
+                            source === 'image'
+                                ? 'builder-toggle-btn builder-toggle-btn-active'
+                                : 'builder-toggle-btn'
+                        }
+                        aria-pressed={source === 'image'}
+                        onClick={() => onSourceChange('image')}
+                    >
+                        Image URL
+                    </button>
+                </div>
 
-                <label htmlFor='image'>image</label>
-                <input
-                    id='image'
-                    type='url'
-                    value={fields.image}
-                    onChange={(e) => updateField('image', e.target.value)}
-                    placeholder='https://example.com/icon.svg'
-                />
+                {source === 'skill' ? (
+                    <>
+                        <span className='builder-form-label-text'>skill</span>
+                        <SkillCombobox
+                            value={fields.skill}
+                            onValueChange={(v) => updateField('skill', v)}
+                            onSkillPicked={onSkillPicked}
+                            categoryFilter={categoryFilter}
+                            onCategoryChange={setCategoryFilter}
+                            recentSlugs={recentSlugs}
+                        />
+                    </>
+                ) : (
+                    <>
+                        <label htmlFor='image'>image</label>
+                        <input
+                            id='image'
+                            type='url'
+                            value={fields.image}
+                            onChange={(e) =>
+                                updateField('image', e.target.value)
+                            }
+                            placeholder='https://example.com/icon.svg'
+                        />
+                    </>
+                )}
 
                 <label htmlFor='level'>level</label>
                 <select
@@ -75,7 +141,9 @@ export default function BuilderForm({
                     id='startColor'
                     type='text'
                     value={fields.startColor}
-                    onChange={(e) => updateField('startColor', e.target.value)}
+                    onChange={(e) =>
+                        updateField('startColor', e.target.value)
+                    }
                     placeholder='ff6b6b'
                 />
 
@@ -92,11 +160,7 @@ export default function BuilderForm({
                 <p className='builder-help builder-help-error'>
                     {validationMessage}
                 </p>
-            ) : (
-                <p className='builder-help'>
-                    Leave <code>level</code> empty for icon-only mode.
-                </p>
-            )}
+            ) : null}
         </article>
     );
 }

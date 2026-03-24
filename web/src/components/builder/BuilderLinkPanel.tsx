@@ -11,7 +11,6 @@ export default function BuilderLinkPanel({
 }: BuilderLinkPanelProps) {
     return (
         <>
-            <h2>Copy Link</h2>
             <label htmlFor='builder-url' className='builder-url-label'>
                 Shareable URL
             </label>
