@@ -282,6 +282,22 @@ article code {
     text-align: center;
 }
 
+.icon-card-link {
+    margin-top: 0.1rem;
+    padding: 0.3rem 0.55rem;
+    border-radius: 0.45rem;
+    border: 1px solid #93c5fd;
+    background-color: #eff6ff;
+    color: #1e3a8a;
+    text-decoration: none;
+    font-size: 0.74rem;
+    font-weight: 700;
+}
+
+.icon-card-link:hover {
+    background-color: #dbeafe;
+}
+
 .quickstart-section {
     background-color: #ffffff;
     border: 1px solid #dbe3ef;
