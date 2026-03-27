@@ -33,8 +33,6 @@ type SkillComboboxProps = {
     recentSlugs: string[];
 };
 
-const LIST_MAX = 80;
-
 export default function SkillCombobox({
     value,
     onValueChange,
@@ -55,7 +53,7 @@ export default function SkillCombobox({
             value,
             allSkillIconEntries,
             categoryFilter,
-        ).slice(0, LIST_MAX);
+        );
     }, [value, categoryFilter]);
 
     useEffect(() => {
