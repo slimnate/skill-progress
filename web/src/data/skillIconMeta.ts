@@ -231,7 +231,6 @@ const DATA_ML = new Set([
     'tensorflow',
     'sklearn',
     'opencv',
-    'ai',
     'processing',
 ]);
 
@@ -256,6 +255,7 @@ const DESIGN = new Set([
     'xd',
     'ae',
     'ps',
+    'ai',
     'blender',
     'sketchup',
     'webflow',
