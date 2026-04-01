@@ -4,10 +4,10 @@ A microservice that generates SVG images from a skill icon/logo, optionally with
 
 Example:
 
-![JavaScript – level 4](https://skill-progress-production.up.railway.app/progress?skill=js&level=4&size=48)
-![TypeScript – level 5](https://skill-progress-production.up.railway.app/progress?skill=ts&level=5&size=48)
-![React – level 4](https://skill-progress-production.up.railway.app/progress?skill=react&level=4&size=48)
-![Convex – level 3](https://skill-progress-production.up.railway.app/progress?skill=convex&level=3&size=48)
+![JavaScript – level 4](https://skillprogress.dev/progress?skill=js&level=4&size=48)
+![TypeScript – level 5](https://skillprogress.dev/progress?skill=ts&level=5&size=48)
+![React – level 4](https://skillprogress.dev/progress?skill=react&level=4&size=48)
+![Convex – level 3](https://skillprogress.dev/progress?skill=convex&level=3&size=48)
 
 ## Parameters
 
@@ -28,7 +28,7 @@ Example:
 A public instance is hosted at:
 
 ```
-https://skill-progress-production.up.railway.app/progress
+https://skillprogress.dev/progress
 ```
 
 You can use it directly in markdown or HTML by adding query parameters for your desired skill/image and optional level.
@@ -38,29 +38,29 @@ You can use it directly in markdown or HTML by adding query parameters for your 
 Using a skill name from [skill-icons](https://github.com/tandpfun/skill-icons) or one of the [custom skills](#custom-skill-icons) included in this project:
 
 ```
-https://skill-progress-production.up.railway.app/progress?skill=js&level=5
+https://skillprogress.dev/progress?skill=js&level=5
 ```
 
-![JavaScript – level 5](https://skill-progress-production.up.railway.app/progress?skill=js&level=5&size=48)
+![JavaScript – level 5](https://skillprogress.dev/progress?skill=js&level=5&size=48)
 
 Other examples:
 
 ```
-https://skill-progress-production.up.railway.app/progress?skill=ts&level=3
-https://skill-progress-production.up.railway.app/progress?skill=react&level=4
-https://skill-progress-production.up.railway.app/progress?skill=convex&level=2
+https://skillprogress.dev/progress?skill=ts&level=3
+https://skillprogress.dev/progress?skill=react&level=4
+https://skillprogress.dev/progress?skill=convex&level=2
 ```
 
-![TypeScript – level 3](https://skill-progress-production.up.railway.app/progress?skill=ts&level=3&size=48)
-![React – level 4](https://skill-progress-production.up.railway.app/progress?skill=react&level=4&size=48)
-![Convex – level 2](https://skill-progress-production.up.railway.app/progress?skill=convex&level=2&size=48)
+![TypeScript – level 3](https://skillprogress.dev/progress?skill=ts&level=3&size=48)
+![React – level 4](https://skillprogress.dev/progress?skill=react&level=4&size=48)
+![Convex – level 2](https://skillprogress.dev/progress?skill=convex&level=2&size=48)
 
 ### Custom image URL
 
 Use any image URL instead of a named skill:
 
 ```
-https://skill-progress-production.up.railway.app/progress?image=https://example.com/my-icon.svg&level=3
+https://skillprogress.dev/progress?image=https://example.com/my-icon.svg&level=3
 ```
 
 ### Icon only (no `level`)
@@ -68,57 +68,57 @@ https://skill-progress-production.up.railway.app/progress?image=https://example.
 Omit `level` to return just the icon:
 
 ```
-https://skill-progress-production.up.railway.app/progress?skill=js
-https://skill-progress-production.up.railway.app/progress?skill=convex&size=64
-https://skill-progress-production.up.railway.app/progress?image=https://example.com/my-icon.svg
+https://skillprogress.dev/progress?skill=js
+https://skillprogress.dev/progress?skill=convex&size=64
+https://skillprogress.dev/progress?image=https://example.com/my-icon.svg
 ```
 
-![JavaScript icon only](https://skill-progress-production.up.railway.app/progress?skill=js&size=48)
-![Convex icon only](https://skill-progress-production.up.railway.app/progress?skill=convex&size=64)
+![JavaScript icon only](https://skillprogress.dev/progress?skill=js&size=48)
+![Convex icon only](https://skillprogress.dev/progress?skill=convex&size=64)
 
 ### Custom output size
 
 Control the output size (16–512 px, default 48):
 
 ```
-https://skill-progress-production.up.railway.app/progress?skill=js&level=4&size=64
-https://skill-progress-production.up.railway.app/progress?skill=react&level=5&size=128
+https://skillprogress.dev/progress?skill=js&level=4&size=64
+https://skillprogress.dev/progress?skill=react&level=5&size=128
 ```
 
-![JavaScript – level 4, size 64](https://skill-progress-production.up.railway.app/progress?skill=js&level=4&size=64)
-![React – level 5, size 128](https://skill-progress-production.up.railway.app/progress?skill=react&level=5&size=128)
+![JavaScript – level 4, size 64](https://skillprogress.dev/progress?skill=js&level=4&size=64)
+![React – level 5, size 128](https://skillprogress.dev/progress?skill=react&level=5&size=128)
 
 ### Custom progress bar colors
 
 Override the default yellow-to-green gradient. Pass 3- or 6-digit hex **without** the `#`; both colors are required:
 
 ```
-https://skill-progress-production.up.railway.app/progress?skill=js&level=5&startColor=ff6b6b&endColor=4ecdc4
-https://skill-progress-production.up.railway.app/progress?skill=ts&level=5&startColor=f00&endColor=00f
+https://skillprogress.dev/progress?skill=js&level=5&startColor=ff6b6b&endColor=4ecdc4
+https://skillprogress.dev/progress?skill=ts&level=5&startColor=f00&endColor=00f
 ```
 
-![JavaScript – custom colors](https://skill-progress-production.up.railway.app/progress?skill=js&level=5&startColor=ff6b6b&endColor=4ecdc4&size=48)
-![TypeScript – custom colors](https://skill-progress-production.up.railway.app/progress?skill=ts&level=5&startColor=f00&endColor=00f&size=48)
+![JavaScript – custom colors](https://skillprogress.dev/progress?skill=js&level=5&startColor=ff6b6b&endColor=4ecdc4&size=48)
+![TypeScript – custom colors](https://skillprogress.dev/progress?skill=ts&level=5&startColor=f00&endColor=00f&size=48)
 
 ### Progress bar style
 
 Choose between rounded and flat styles. Default is `rounded`:
 
 ```
-https://skill-progress-production.up.railway.app/progress?skill=js&level=5&style=flat
-https://skill-progress-production.up.railway.app/progress?skill=react&level=4&style=rounded
+https://skillprogress.dev/progress?skill=js&level=5&style=flat
+https://skillprogress.dev/progress?skill=react&level=4&style=rounded
 ```
 
-![JavaScript – flat style](https://skill-progress-production.up.railway.app/progress?skill=js&level=5&style=flat&size=48)
-![React – rounded style](https://skill-progress-production.up.railway.app/progress?skill=react&level=4&style=rounded&size=48)
+![JavaScript – flat style](https://skillprogress.dev/progress?skill=js&level=5&style=flat&size=48)
+![React – rounded style](https://skillprogress.dev/progress?skill=react&level=4&style=rounded&size=48)
 
 ### Combined example
 
 ```
-https://skill-progress-production.up.railway.app/progress?skill=convex&level=4&size=96&startColor=667eea&endColor=764ba2
+https://skillprogress.dev/progress?skill=convex&level=4&size=96&startColor=667eea&endColor=764ba2
 ```
 
-![Convex – combined example](https://skill-progress-production.up.railway.app/progress?skill=convex&level=4&size=96&startColor=667eea&endColor=764ba2)
+![Convex – combined example](https://skillprogress.dev/progress?skill=convex&level=4&size=96&startColor=667eea&endColor=764ba2)
 
 ## Development
 

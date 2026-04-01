@@ -23,19 +23,19 @@ export type CustomIcon = {
 export const examples: Example[] = [
     {
         label: 'JavaScript - Level 4',
-        url: 'https://skill-progress-production.up.railway.app/progress?skill=js&level=4&size=64',
+        url: 'https://skillprogress.dev/progress?skill=js&level=4&size=64',
     },
     {
         label: 'React - Flat Style',
-        url: 'https://skill-progress-production.up.railway.app/progress?skill=react&level=4&style=flat&size=64',
+        url: 'https://skillprogress.dev/progress?skill=react&level=4&style=flat&size=64',
     },
     {
         label: 'Convex - Custom Colors',
-        url: 'https://skill-progress-production.up.railway.app/progress?skill=convex&level=4&size=64&startColor=667eea&endColor=764ba2',
+        url: 'https://skillprogress.dev/progress?skill=convex&level=4&size=64&startColor=667eea&endColor=764ba2',
     },
     {
         label: 'TypeScript - Icon Only',
-        url: 'https://skill-progress-production.up.railway.app/progress?skill=ts&size=64',
+        url: 'https://skillprogress.dev/progress?skill=ts&size=64',
     },
 ];
 
@@ -126,4 +126,4 @@ export const customIcons: CustomIcon[] = [
 ];
 
 export const quickstartExampleUrl =
-    'https://skill-progress-production.up.railway.app/progress?skill=js&level=4&size=48';
+    'https://skillprogress.dev/progress?skill=js&level=4&size=48';
